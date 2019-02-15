@@ -1,0 +1,65 @@
+<div class="clr-row" *ngIf="model">
+  <div class="clr-col-md-12 controls-pane">
+    <clr-dropdown>
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Cycle Actions</h4>
+        <a clrDropdownItem [routerLink]="['/projects', projectId,'cycles', 'edit', model._id]">Edit</a>
+        <a clrDropdownItem (click)="clone(model._id)">Clone</a>
+        <a clrDropdownItem (click)="delete(model._id)">Delete</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+  <!-- CONTENT -->
+  <div class="clr-col-md-12 ">
+    <section class="element-description">
+      <div class="title">{{this.model.title}}</div>
+      <div class="description">
+        {{this.model.description}}
+      </div>
+      <!-- ATTRIBUTES -->
+      <div class="section-header">Attributes</div>
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let field of extraFields">
+            <td class="left">{{field.title}}</td>
+            <td>{{model[field.key]}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </section>
+  </div>
+
+  <!-- TEST SETS-->
+  <div class="clr-col-lg-12 section-header">Test Sets</div>
+  <div class="clr-col-md-12" *ngIf="!loading && testSetModel">
+      <sprova-testsets-datagrid [projectId]="projectId" [cycleId]="cycleId"></sprova-testsets-datagrid>
+  </div>
+
+  <!-- TEST CASES -->
+  <div class="clr-col-lg-12 section-header">Test Cases</div>
+  <div class="clr-col-md-12 controls-pane">
+    <sprova-testcases-grid [model]="testCases" [loading]="testCasesLoading" [viewType]="viewType"></sprova-testcases-grid>
+  </div>
+
+</div>
+
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!model && !loading">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

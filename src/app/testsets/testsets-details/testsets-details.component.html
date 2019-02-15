@@ -1,0 +1,82 @@
+<div class="clr-row" *ngIf="model && !loading">
+  <div class="clr-col-md-12 controls-pane">
+    <clr-dropdown>
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Test Set Actions</h4>
+        <a clrDropdownItem [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testsets', 'edit', model._id]">Edit</a>
+        <a clrDropdownItem (click)="delete(model._id)">Delete</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+  <div class="clr-col-md-12 ">
+    <section>
+      <div class="title">{{this.model.title}}</div>
+      <div class="description">
+        {{this.model.description}}
+      </div>
+
+    </section>
+  </div>
+  <div class="clr-col-md-12">
+    <section>
+      <div class="btn-group btn-sm btn-primary">
+        <button class="btn" (click)="runManually()">New Manual Execution</button>
+        <button class="btn" disabled>Automatic Execution</button>
+      </div>
+
+    </section>
+  </div>
+  <div class="clr-col-md-12">
+    <clr-datagrid>
+      <clr-dg-column>Test set execution</clr-dg-column>
+      <clr-dg-column>Created at</clr-dg-column>
+      <clr-dg-column>Started at</clr-dg-column>
+      <clr-dg-column>Ended at</clr-dg-column>
+      <clr-dg-column>Status</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let execution of testSetExecutions">
+        <clr-dg-cell>
+          <a [routerLink]="['/projects', projectId,'cycles', cycleId,'executionsets', execution._id]">{{execution._id}}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>
+          {{execution.createdAt | amCalendar}}
+        </clr-dg-cell>
+        <clr-dg-cell>
+          {{execution.startedAt | amCalendar}}
+        </clr-dg-cell>
+        <clr-dg-cell>
+          {{execution.finishedAt | amCalendar}}
+        </clr-dg-cell>
+        <clr-dg-cell>
+          <span class="label" [ngClass]="{'label-success': execution.status=='SUCCESSFUL','label-warning': execution.status=='PENDING','label-danger': execution.status=='FAILED'}">{{execution.status}}</span>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="testSetExecutions">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} executions
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" (clrDgPage)="skip" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>
+
+
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!loading && !model">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div id="report-content" *ngIf="model">
+  <h1 class="report-title">{{model.project.title}}</h1>
+  <h4>{{model.project.description}}</h4>
+
+  <section id="cycle-section">
+    <h3>Cycles</h3>
+    <div class="clr-row">
+      <div class="clr-col-xs-12 clr-col-md-12 clr-col-lg-12 clr-col-xl-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="left">Cycle title</th>
+              <th>Created</th>
+              <th>Updated</th>
+              <th>Test cases</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cycle of model.cycles">
+              <td class="left">{{cycle.title}}</td>
+              <td>{{cycle.createdAt | amCalendar}}</td>
+              <td>{{cycle.updatedAt | amCalendar}}</td>
+              <td>{{cycle.testCases.length}}</td>
+              <td><span class="label" [ngClass]="{'label-success': cycle.status=='Active','label-warning': cycle.status=='Abandoned','label-purple': cycle.status=='Finished','label-light-blue': cycle.status=='Planned'}">{{cycle.status}}</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="testcase-section">
+    <h3>Test cases</h3>
+    <div class="chart-container">
+      <canvas id="testcases-chart" width="400" height="400"></canvas>
+    </div>
+  </section>
+
+  <!-- {{model | json}} -->
+</div>
+
+
+
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!model && loading">
+  Loading...
+</div>
+<div class="clr-row" *ngIf="!model && !loading">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

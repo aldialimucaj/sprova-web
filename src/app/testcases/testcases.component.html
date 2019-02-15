@@ -1,0 +1,44 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-md-10 offset-md-1">
+    <clr-datagrid class="testcases-datagrid">
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+      <clr-dg-column>Status</clr-dg-column>
+
+
+      <clr-dg-row (click)="navigatorService.showTestCases()" class="hand">
+        <clr-dg-cell>
+          ..
+        </clr-dg-cell>
+        <clr-dg-cell>
+        </clr-dg-cell>
+        <clr-dg-cell>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-row *ngFor="let testcase of folders" (click)="navigatorService.openTestCaseChildren(testcase._id)" class="hand">
+        <clr-dg-cell>
+          <clr-icon shape="folder" class="is-solid"></clr-icon>{{testcase.title}}
+        </clr-dg-cell>
+        <clr-dg-cell>{{testcase.description}}</clr-dg-cell>
+        <clr-dg-cell>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-row *ngFor="let testcase of model" (click)="navigatorService.openTestCase(testcase._id)" class="hand">
+        <clr-dg-cell>
+          <clr-icon shape="file"></clr-icon>{{testcase.title}}
+        </clr-dg-cell>
+        <clr-dg-cell>{{testcase.description}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span class="label" [ngClass]="{'label-success': testcase.status=='active','label-warning': testcase.status=='inactive','label-danger': testcase.status=='defect'}">{{testcase.status}}</span>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="model">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Test cases
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

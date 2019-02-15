@@ -1,0 +1,78 @@
+<div class="clr-row" *ngIf="model">
+  <div class="clr-col-md-12 controls-pane">
+    <clr-dropdown>
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Project Actions</h4>
+        <a clrDropdownItem [routerLink]="['/projects', 'edit', model._id]">Edit</a>
+        <a clrDropdownItem (click)="delete(model._id)">Delete</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+  <div class="clr-col-md-12 ">
+    <div class="title">{{this.model.title}}</div>
+    <div class="description">
+      {{this.model.description}}
+    </div>
+  </div>
+</div>
+
+<div class="clr-row" *ngIf="model">
+  <div class="clr-col-lg-6 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Cycles</h3>
+        <p class="card-text">
+          Latest active cycles
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let cycle of cycleModel">
+          <a [routerLink]="['/projects', model._id, 'cycles', cycle._id]">{{cycle.title}}</a>
+        </li>
+      </ul>
+      <div class="card-footer">
+        <a [routerLink]="['/projects', model._id, 'cycles']" class="btn btn-sm btn-link">See all</a>
+      </div>
+    </div>
+  </div>
+  <div class="clr-col-lg-6 clr-col-md-12 clr-col-sm-12 clr-col-xs-12">
+    <div class="card">
+      <div class="card-block">
+        <h3 class="card-title">Test cases</h3>
+        <p class="card-text">
+          Latest active test cases
+        </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let testCase of testCaseModel">
+            <a [routerLink]="['/projects', model._id, 'testcases', testCase._id]">{{testCase.title}}</a></li>
+      </ul>
+      <div class="card-footer">
+        <a [routerLink]="['/projects', model._id, 'testcases']" class="btn btn-sm btn-link">See all</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!model && !loading">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

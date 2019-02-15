@@ -1,0 +1,93 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-lg-12">
+    <form clrForm [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" [hidden]="submitted">
+      <!-- Info -->
+      <section class="form-block">
+        <label>General Information</label>
+        <!-- ID -->
+        <div class="form-group">
+          <label for="userUsername">Username</label>
+          <label for="userUsername" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('username')">
+            <input type="text" id="userUsername" placeholder="Enter user ID" required formControlName="username">
+            <span class="tooltip-content">
+              User ID is Required.
+            </span>
+          </label>
+        </div>
+        <!-- FIRST NAME -->
+        <div class="form-group">
+          <label for="userFirstname">Firstname</label>
+          <label for="userFirstname" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('firstname')">
+            <input type="text" id="userFirstname" placeholder="Enter first name" required formControlName="firstname">
+            <span class="tooltip-content">
+              First name is Required.
+            </span>
+          </label>
+        </div>
+        <!-- LAST NAME -->
+        <div class="form-group">
+          <label for="userLastname">Lastname</label>
+          <label for="userLastname" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('lastname')">
+            <input type="text" id="userLastname" placeholder="Enter first name" required formControlName="lastname">
+            <span class="tooltip-content">
+              First name is Required.
+            </span>
+          </label>
+        </div>
+        <!-- PASSWORD -->
+        <div class="form-group">
+          <label for="userPassword">Password</label>
+          <label for="userPassword" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('password')">
+            <input type="password" id="userPassword" placeholder="Enter first name" required formControlName="password">
+            <span class="tooltip-content">
+              Password is Required.
+            </span>
+          </label>
+        </div>
+        <!-- EMAIL -->
+        <div class="form-group">
+            <label for="userEmail">E-Mail</label>
+            <label for="userEmail" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('email')">
+              <input type="password" id="userEmail" placeholder="Enter first name" required formControlName="email">
+              <span class="tooltip-content">
+                Password is Required.
+              </span>
+            </label>
+          </div>
+        <!-- STATUS -->
+        <div class="form-group">
+          <label for="userStatus">Status</label>
+          <label for="userStatus" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('status')">
+            <div class="select select-field-key">
+              <select formControlName="status">
+                <option *ngFor="let type of statusTypes" [value]="type">{{type}}</option>
+              </select>
+            </div>
+            <span class="tooltip-content">
+              Status is Required.
+            </span>
+          </label>
+        </div>
+        <!-- ADMIN -->
+        <div class="form-group">
+            <label for="userAdmin">Admin</label>
+            <label for="userAdmin" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('admin')">
+                <div class="toggle-switch">
+                    <input type="checkbox" id="admin" formControlName="admin">
+                    <label for="admin"></label>
+                </div>
+              <span class="tooltip-content">
+                Admin is Required.
+              </span>
+            </label>
+          </div>
+
+      </section>
+
+      <!-- SAVE - CANCEL -->
+      <section class="form-block">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+      </section>
+    </form>
+  </div>
+</div>

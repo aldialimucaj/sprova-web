@@ -1,0 +1,28 @@
+<div class="login-wrapper">
+    <form clrForm class="login" (ngSubmit)="onSubmit()">
+        <label class="title">
+            {{labels.APP_NAME}}
+        </label>
+        <div class="login-group">
+            <div class="auth-source select">
+                <select id="login-auth-source-1">
+                    <option>Local Users</option>
+                    <option>Administrator</option>
+                </select>
+            </div>
+            <input [(ngModel)]="model.username" name="username" class="username" type="text" id="login_username" placeholder="Username">
+            <input [(ngModel)]="model.password" name="password" class="password" type="password" id="login_password" placeholder="Password">
+            <div class="checkbox">
+                <input type="checkbox" id="rememberme">
+                <label for="rememberme">
+                    Remember me
+                </label>
+            </div>
+            <div class="error active" *ngIf="error">
+                Invalid user name or password
+            </div>
+            <button type="submit" class="btn btn-primary">LOG IN</button>
+            <a href="..." class="signup">Sign up for an account</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,49 @@
+.sp-data-table {
+    margin-top: 1em;
+}
+
+.table-description{
+    text-align: left
+}
+
+.measurement-value {
+    padding: .5em;
+    text-align: center;
+    font-size: 4em;
+}
+.measurement-value .unit {
+    color: #a7a7a7;
+}
+
+.controls-pane {
+    position: relative;
+    text-align: right;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-size: 1.5vw;
+}
+
+
+.section-header {
+    padding-top: 2em;
+    font-weight: bold;
+}
+
+.execution-success {
+    background: #dff0d0;
+}
+
+.execution-failed {
+    background: #f5dbd9;
+}
+
+.execution-pending {
+    background: #feecb5;
+}
+
+.execution-working {
+    background: #e1f1f6;
+}

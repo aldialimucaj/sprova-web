@@ -1,0 +1,24 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-md-10 offset-md-1">
+    <clr-datagrid>
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+      <clr-dg-column>Status</clr-dg-column>
+
+      <clr-dg-row *ngFor="let cycle of model">
+        <clr-dg-cell>
+          <a [routerLink]="[cycle._id]">{{cycle.title}}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>{{cycle.description}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span class="label" [ngClass]="{'label-success': cycle.status=='active','label-warning': cycle.status=='inactive','label-danger': cycle.status=='defect'}">{{cycle.status}}</span>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="model">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} cycles
+        <clr-dg-pagination #pagination [clrDgPageSize]="20" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

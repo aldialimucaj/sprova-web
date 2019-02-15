@@ -1,0 +1,37 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12">
+    <form clrForm [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" [hidden]="submitted">
+      <!-- Info -->
+      <section class="form-block">
+        <label>General Information</label>
+        <div class="form-group">
+          <label for="executionTitle">Title</label>
+          <label for="executionTitle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('title')">
+            <input type="text" id="executionTitle" placeholder="Enter execution title" required formControlName="title">
+            <span class="tooltip-content">
+              Title is Required.
+            </span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="executionDescription">Description</label>
+          <label for="executionDescription" aria-haspopup="true" role="tooltip" class="description-label tooltip tooltip-validation tooltip-md description"
+            [class.invalid]="!valid('description')">
+            <textarea type="text" id="executionDescription" required placeholder="Enter Description" class="description-field" formControlName="description">
+                </textarea>
+            <span class="tooltip-content">
+              Description is Required.
+            </span>
+          </label>
+        </div>
+        
+      </section>
+      <!-- Fields -->
+      <section class="form-block">
+        <label>Fields</label>
+      </section>
+
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+    </form>
+  </div>
+</div>

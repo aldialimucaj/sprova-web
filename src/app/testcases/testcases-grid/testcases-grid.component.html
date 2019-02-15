@@ -1,0 +1,36 @@
+<clr-datagrid [ngSwitch]="viewType" *ngIf="!loading" class="testcase-grid">
+  <clr-dg-column>Title</clr-dg-column>
+  <clr-dg-column>Description</clr-dg-column>
+  <clr-dg-column *ngSwitchCase="vType.Execute">Status (W/S/P/F)</clr-dg-column>
+  <clr-dg-column *ngSwitchCase="vType.Execute">Execute</clr-dg-column>
+  <clr-dg-column *ngSwitchCase="vType.EditCycle">Action</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let testcase of model">
+    <!-- TITLE -->
+    <clr-dg-cell>
+      <a [routerLink]="['/projects', projectId, 'testcases', testcase._id]" *ngIf="!cycleId">{{testcase.title}}</a>
+      <a [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testcases', testcase._id]" *ngIf="cycleId">{{testcase.title}}</a>
+    </clr-dg-cell>
+    <!-- DESCRIPTION -->
+    <clr-dg-cell>{{testcase.description}}</clr-dg-cell>
+    <!-- (?) STATUS -->
+    <clr-dg-cell *ngSwitchCase="vType.Execute">
+      <span class="label" [ngClass]="{'label-success': stat._id=='SUCCESSFUL','label-danger': stat._id=='FAILED','label-warning': stat._id=='PENDING', 'label-info': stat._id=='WORKING'}"
+        *ngFor="let stat of testcase.executionsStats">{{stat.total}}</span>
+    </clr-dg-cell>
+    <!-- (x) EXECUTE/ACTION -->
+    <clr-dg-cell *ngSwitchCase="vType.EditCycle">
+      <button type="button" class="btn btn-default btn-sm controls" *ngIf="canAdd(testcase._id)" (click)="addTestCase(testcase)">Add</button>
+      <button type="button" class="btn btn-danger-outline btn-sm controls" *ngIf="canRemove(testcase._id)" (click)="removeTestCase(testcase)">Remove</button>
+    </clr-dg-cell>
+    <clr-dg-cell *ngSwitchCase="vType.Execute">
+      <button class="btn btn-info-outline btn-sm controls" [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testcases', testcase._id, 'execute']">Execute</button>
+    </clr-dg-cell>
+
+  </clr-dg-row>
+
+  <clr-dg-footer *ngIf="model">
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} testcases
+    <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

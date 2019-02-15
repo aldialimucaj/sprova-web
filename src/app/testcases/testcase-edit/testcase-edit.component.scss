@@ -1,0 +1,35 @@
+.description-label {
+    width: 100% !important;
+    .description-field {
+        width: 95% !important;
+    }
+}
+
+.form-block {
+    padding-top: 2em;
+}
+
+.payload {
+    position: relative;
+    .input-field {
+        position: absolute;
+    }
+    .artifacts {
+        position: relative;
+        float: left; 
+        width: 85%;
+        .select-element {
+            
+        }
+        .delete {
+            position: absolute;
+            top: 0;
+            right: -25px;
+        }
+    }
+    .attachment {
+        position: absolute;
+        margin-top: .25rem;
+        right: 0;
+    }
+}

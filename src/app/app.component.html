@@ -1,21 +1,68 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<clr-main-container>
+  <clr-header id="header">
+    <div class="branding">
+      <a href="#" class="nav-link">
+        <clr-icon shape="home"></clr-icon>
+        <span class="title">Sprova</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown class="dropdown" *ngIf="authenticationService.isLoggedIn()">
+        <button class="nav-icon" clrDropdownToggle>
+          <clr-icon shape="user"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <div class="dropdown-menu">
+          <a [routerLink]="['/settings']" clrDropdownItem>Settings</a>
+          <a [routerLink]="['/users']" clrDropdownItem>Users</a>
+          <a [routerLink]="['/login']" clrDropdownItem>Log out</a>
+        </div>
+      </clr-dropdown>
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- VERTICAL NAV -->
+    <clr-vertical-nav id="vertical-nav" *ngIf="authenticationService.isLoggedIn()" [clrVerticalNavCollapsible]="true"
+      [(clrVerticalNavCollapsed)]="collapsed">
 
-<router-outlet></router-outlet>
+      <a clrVerticalNavLink [routerLink]="['/projects']">
+        <clr-icon clrVerticalNavIcon shape="line-chart"></clr-icon>
+        Projects
+      </a>
+
+      <a *ngIf="projectId" clrVerticalNavLink [routerLink]="['/projects', projectId, 'cycles']">
+        <clr-icon clrVerticalNavIcon shape="sync"></clr-icon>
+        Cycles
+      </a>
+
+      <a *ngIf="cycleId" clrVerticalNavLink [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testsets']">
+        <clr-icon clrVerticalNavIcon shape="pinboard"></clr-icon>
+        Test Sets
+      </a>
+
+      <a *ngIf="projectId" clrVerticalNavLink [routerLink]="['/projects', projectId,'testcases']">
+        <clr-icon clrVerticalNavIcon shape="file-group"></clr-icon>
+        Test Cases
+      </a>
+
+      <a *ngIf="projectId && !cycleId && !testSetId" clrVerticalNavLink [routerLink]="['/projects', projectId,'report']">
+        <clr-icon clrVerticalNavIcon shape="pie-chart"></clr-icon>
+        Report
+      </a>
+
+      <a *ngIf="projectId && cycleId && !testSetId" clrVerticalNavLink [routerLink]="['/projects', projectId, 'cycles', cycleId, 'report']">
+        <clr-icon clrVerticalNavIcon shape="pie-chart"></clr-icon>
+        Report
+      </a>
+
+      <a *ngIf="projectId && cycleId && testSetId" clrVerticalNavLink [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testset', testSetId, 'report']">
+        <clr-icon clrVerticalNavIcon shape="pie-chart"></clr-icon>
+        Report
+      </a>
+
+    </clr-vertical-nav>
+  </div>
+</clr-main-container>

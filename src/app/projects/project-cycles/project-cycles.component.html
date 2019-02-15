@@ -1,0 +1,34 @@
+<div class="clr-col-md-12" *ngIf="!loading">
+    <div class="clr-col-md-12 controls-pane">
+        <clr-dropdown>
+          <button clrDropdownTrigger type="button" class="dropdown-toggle">
+            <clr-icon shape="cog" size="24"></clr-icon>
+            <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+              <h4 class="dropdown-header">Project's Cycles</h4>
+              <a clrDropdownItem [routerLink]="['/projects', projectId, 'cycles', 'edit','new']">Add Cycle</a>
+          </clr-dropdown-menu>
+        </clr-dropdown>
+      </div>
+    <clr-datagrid>
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+      <clr-dg-column>Status</clr-dg-column>
+
+      <clr-dg-row *ngFor="let cycle of cycleModel">
+        <clr-dg-cell>
+          <a [routerLink]="['/projects', projectId, 'cycles',cycle._id]">{{cycle.title}}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>{{cycle.description}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span class="label" [ngClass]="{'label-success': cycle.status=='active','label-warning': cycle.status=='inactive','label-danger': cycle.status=='defect'}">{{cycle.status}}</span>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="cycleModel">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} cycles
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="cycleModel.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>

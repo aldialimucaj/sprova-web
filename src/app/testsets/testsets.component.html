@@ -1,0 +1,18 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-md-8">
+    <span class="title">Test sets for cycle: {{cycleModel.title}}</span>
+  </div>
+  <div class="clr-col-md-4">
+    <clr-dropdown class="controls-pane">
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Cycle's test sets</h4>
+        <a clrDropdownItem [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testsets', 'edit','new']">Add Set</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
+<sprova-testsets-datagrid [projectId]="projectId" [cycleId]="cycleId"></sprova-testsets-datagrid>

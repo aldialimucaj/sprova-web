@@ -1,0 +1,63 @@
+<form clrForm [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" [hidden]="submitted">
+  <!-- Info -->
+  <section class="form-block">
+    <label>General Information</label>
+    <!-- TITLE -->
+    <div class="form-group">
+      <label for="testSetTitle">Title</label>
+      <label for="testSetTitle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+        [class.invalid]="!valid('title')">
+        <input type="text" id="testSetTitle" placeholder="Enter testSet title" required formControlName="title">
+        <span class="tooltip-content">
+          Title is Required.
+        </span>
+      </label>
+    </div>
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+      <label for="testSetDescription">Description</label>
+      <label for="testSetDescription" aria-haspopup="true" role="tooltip" class="description-label tooltip tooltip-validation tooltip-md description"
+        [class.invalid]="!valid('description')">
+        <textarea type="text" id="testSetDescription" rows="3" placeholder="Enter Description" class="description-field"
+          formControlName="description">
+                </textarea>
+        <span class="tooltip-content">
+          Description is Required.
+        </span>
+      </label>
+    </div>
+    <!-- STATUS -->
+    <div class="form-group">
+      <label for="testSetStatus">Status</label>
+      <label for="testSetStatus" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+        [class.invalid]="!valid('status')">
+        <div class="select select-field-key">
+          <select formControlName="status">
+            <option *ngFor="let type of statusTypes" [value]="type">{{type}}</option>
+          </select>
+        </div>
+        <span class="tooltip-content">
+          Status is Required.
+        </span>
+      </label>
+    </div>
+
+  </section>
+
+  <!-- Test Cases -->
+  <section class="form-block section-edit" *ngIf="model">
+    <label>Fields</label>
+    <div class="form-group">
+      <label for="testSetTestCases">Test Cases</label>
+      <div class="testcase-grid controls-pane">
+        <sprova-testcase-selection *ngIf="testCases" id="setTestCases" [model]="testCases" [treeModel]="treeModel" [(selected)]="selectedTestCases"
+          [loading]="testCasesLoading">
+        </sprova-testcase-selection>
+      </div>
+    </div>
+
+  </section>
+
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+  <a class="btn btn-danger" (click)="cancel()">Cancel</a>
+</form>

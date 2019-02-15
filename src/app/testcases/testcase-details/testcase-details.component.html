@@ -1,0 +1,77 @@
+<div class="clr-row" *ngIf="model">
+  <div class="clr-col-md-12 controls-pane">
+    <clr-dropdown>
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Test Case Actions</h4>
+        <a clrDropdownItem [routerLink]="['/projects', projectId, 'testcases', 'edit', model._id]">Edit</a>
+        <a clrDropdownItem (click)="delete(model._id)">Delete</a>
+        <a clrDropdownItem [routerLink]="['/projects', projectId, 'testcases', 'new', 'parent', model._id]">Add
+          child</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+  <div class="clr-col-md-12 ">
+    <section>
+      <div class="title">{{this.model.title}}</div>
+      <div class="description">
+        {{this.model.description}}
+      </div>
+      <!-- TEST STEPS -->
+      <div class="section-header">Test Steps</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="left">Action</th>
+            <th class="left">Payload</th>
+            <th class="left">Expected</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let step of model.testSteps">
+            <td class="left">{{step.action}}</td>
+            <td class="left">{{step.payload}}
+              <clr-icon class="has-badge hand" shape="attachment" (click)="dowload(artifact)"
+                *ngFor="let artifact of step.artifacts; let i=index"> </clr-icon>
+            </td>
+            <td class="left">{{step.expected}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+<div class="clr-row" *ngIf="executionsModel">
+  <!-- TEST STEPS -->
+  <div class="clr-col-md-12">
+    <div class="section-header">Executions</div>
+    <sprova-executions-grid [executions]="executionsModel" [loading]="executionsLoading"></sprova-executions-grid>
+  </div>
+</div>
+
+<div class="clr-row">
+  <!-- TEST STEPS -->
+  <div class="clr-col-md-12">
+    <div class="section-header">Executions chart</div>
+    <sprova-execution-pie *ngIf="executionsModel" [executions]="executionsModel" [loading]="executionsLoading">
+    </sprova-execution-pie>
+  </div>
+</div>
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!model && !loading">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

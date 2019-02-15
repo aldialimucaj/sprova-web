@@ -1,0 +1,51 @@
+<div id="wrapper" *ngIf="!loading" class="clr-row">
+  <div class="clr-col-lg-3 clr-col-sm-12 padding-0">
+    <div class="folder-tree">
+      <clr-tree-node *ngIf="!treeLoading">
+        <button class="clr-treenode-link" [class.active]="rootElementActive" type="button" [class.active]="active"
+          (click)="resetModel(testCases)">
+          <clr-icon shape="folder"></clr-icon>
+          All Tests
+        </button>
+        <ng-template>
+        </ng-template>
+      </clr-tree-node>
+      <sprova-node *ngIf="treeElements" [(treeElements)]="treeElements" (onModelUpdate)="updateModel($event)">
+      </sprova-node>
+    </div>
+  </div>
+  <div class="clr-col-lg-9 clr-col-sm-12 padding-0">
+    <clr-datagrid #dgrid [(clrDgSelected)]="selected" [clrDgLoading]="loading"
+      (clrDgSelectedChange)="selectionChanged($event)">
+      <clr-dg-column [clrDgField]="'title'">Title</clr-dg-column>
+      <clr-dg-column [clrDgField]="'description'">Description</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let testCase of model" [clrDgItem]="testCase">
+        <clr-dg-cell>
+          <a
+            [routerLink]="['/projects', projectId, 'cycles', cycleId, 'testcases', testCase._id]">{{testCase.title}}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>{{testCase.description}}</clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer>
+        <clr-dropdown class="action-tc-select">
+          <button type="button" clrDropdownTrigger>
+            <clr-icon shape="checkbox-list" size="24"></clr-icon>
+            <clr-icon shape="caret down"></clr-icon>
+          </button>
+          <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>
+            <button type="button" (click)="selectAllTests()" clrDropdownItem>All</button>
+            <button type="button" (click)="selectNoneTests()" clrDropdownItem>None</button>
+          </clr-dropdown-menu>
+        </clr-dropdown>
+
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} testcases
+
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length">
+
+        </clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

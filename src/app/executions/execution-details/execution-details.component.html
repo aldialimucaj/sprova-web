@@ -1,0 +1,104 @@
+<div class="clr-row" *ngIf="model">
+  <div class="clr-col-md-12 controls-pane">
+    <clr-dropdown>
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Execuiton Actions</h4>
+        <a clrDropdownItem (click)="reRun(model._id)">Re-run</a>
+        <a clrDropdownItem (click)="delete(model._id)">Delete</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+  <!-- CONTENT -->
+  <div class="clr-col-md-12 ">
+    <section class="element-description">
+      <div class="title">{{this.model.title}}
+        <clr-icon shape="check-circle" class="is-success" size="32" *ngIf="model.status ==='SUCCESSFUL'"></clr-icon>
+        <clr-icon shape="times-circle" class="is-danger" size="32" *ngIf="model.status ==='FAILED'"></clr-icon>
+      </div>
+      <div class="description">
+        {{this.model.description}}
+      </div>
+
+    </section>
+  </div>
+
+  <div class="clr-col-md-12 ">
+    <section>
+      <!-- TEST STEPS -->
+      <div class="section-header">Test Steps</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="left">Action</th>
+            <th class="left">Payload</th>
+            <th class="left">Expected</th>
+            <th class="left">Comment</th>
+            <th class="left">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let step of model.testSteps">
+            <td class="left">{{step.action}}</td>
+            <td class="left">{{step.payload}}</td>
+            <td class="left">{{step.expected}}</td>
+            <td class="left">{{step.comment}}</td>
+            <td class="left"><span class="label"
+                [ngClass]="{'label-success': step.status=='SUCCESSFUL', 'label-danger': step.status=='FAILED', 'label-warning': step.status=='PENDING', 'label-info': step.status=='WORKING'}">{{step.status}}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+
+  <div class="clr-col-md-12">
+    <section>
+      <!-- TEST DETAILS -->
+      <p class="section-header">Details</p>
+      <div>Start time: {{model.createdAt}}</div>
+      <div>Last update: {{model.updatedAt}}</div>
+      <div *ngIf="model.user">Executed by: {{model.user.username}}</div>
+      <p class="detail-header">Attachments</p>
+      <div class="clr-row">
+        <div *ngFor="let artifact of artifacts">
+          <div class="clr-col-lg-2 clr-col-md-4 clr-col-sm-6 clr-col-xs-12">
+            <div class="card-block text-center">
+              <clr-icon shape="file" size="72"></clr-icon>
+              <p class="card-text">
+                {{artifact.fileName}}
+              </p>
+            </div>
+            <div class="card-footer">
+              <div class="progress-static top">
+                <div class="progress-meter" data-value="..."></div>
+              </div>
+              <button type="button" (click)="artifactService.downloadArtifact(artifact._id)"
+                class="card-link btn btn-link">Download</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!model && !loading">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

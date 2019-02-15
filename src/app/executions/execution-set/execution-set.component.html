@@ -1,0 +1,17 @@
+<div *ngIf="model">
+  <sprova-execution-manually [execution]="model" [cycleId]="cycleId"></sprova-execution-manually>
+</div>
+<div class="clr-row navigation-footer">
+  <div class="clr-col-8">
+    <button class="btn btn-info" (click)="goToTestSet()">
+      <clr-icon shape="undo"></clr-icon> Back to Test Set
+    </button>
+  </div>
+  <div class="clr-col-4 right-side" *ngIf="testSetId">
+    <div class="float-right">
+      <button class="btn btn-info" (click)="goToNextTest()" [disabled]="!hasNextTest">
+        <clr-icon shape="step-forward"></clr-icon> Next
+      </button>
+    </div>
+  </div>
+</div>

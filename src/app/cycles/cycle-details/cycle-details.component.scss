@@ -1,0 +1,24 @@
+.measurement-value {
+    padding: .5em;
+    text-align: center;
+    font-size: 4em;
+}
+.measurement-value .unit {
+    color: #a7a7a7;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-size: 1.5vw;
+}
+
+.controls-pane {
+    position: relative;
+    text-align: right;
+}
+
+.section-header {
+    padding-top: 2em;
+    font-weight: bold;
+}

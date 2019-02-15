@@ -1,0 +1,63 @@
+<div class="clr-row">
+  <div class="clr-col-md-8 ">
+    <!-- Control UI -->
+    <div *ngIf="folder">
+      <div class="title">{{this.folder.title}}</div>
+      <div class="description">
+        {{folder.description}}
+      </div>
+    </div>
+  </div>
+  <div class="clr-col-md-4">
+    <clr-dropdown class="controls-pane">
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Projects</h4>
+        <a *ngIf="testCaseId" clrDropdownItem [routerLink]="['/projects', projectId, 'testcases', 'edit', testCaseId]">Edit</a>
+        <a *ngIf="!testCaseId" clrDropdownItem [routerLink]="['/projects', projectId, 'testcases', 'edit','new']">Add Test Case</a>
+        <a *ngIf="testCaseId" clrDropdownItem [routerLink]="['/projects', projectId, 'testcases', 'new', 'parent', testCaseId]">Add Test Case</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
+
+<div class="clr-row">
+  <div class="clr-col-md-12 " *ngIf="model">
+    <clr-datagrid class="testcases-datagrid">
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+      <clr-dg-column>Status</clr-dg-column>
+
+
+      <clr-dg-row (click)="toParent()" class="hand">
+        <clr-dg-cell>
+          ..
+        </clr-dg-cell>
+        <clr-dg-cell>
+        </clr-dg-cell>
+        <clr-dg-cell>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+
+      <clr-dg-row *clrDgItems="let testcase of model | packageFilter:'isParent'" (click)="open(testcase)" class="hand">
+        <clr-dg-cell>
+          <clr-icon *ngIf="testcase.isParent" shape="folder" class="is-solid"></clr-icon>
+          <clr-icon *ngIf="!testcase.isParent" shape="file"></clr-icon>{{testcase.title}}
+        </clr-dg-cell>
+        <clr-dg-cell>{{testcase.description}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span *ngIf="!testcase.isParent" class="label" [ngClass]="{'label-success': testcase.status=='active','label-warning': testcase.status=='inactive','label-danger': testcase.status=='defect'}">{{testcase.status}}</span>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="model">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Test cases
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

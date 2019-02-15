@@ -1,0 +1,41 @@
+<div class="clr-row" *ngIf="!loading">
+    <div class="clr-col-md-8 ">
+      <span class="title">Users</span>
+    </div>
+    <div class="clr-col-md-4">
+      <clr-dropdown class="controls-pane">
+        <button clrDropdownTrigger type="button" class="dropdown-toggle">
+          <clr-icon shape="cog" size="24"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <h4 class="dropdown-header">Users</h4>
+          <a clrDropdownItem [routerLink]="['/users/edit']">Add User</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </div>
+<div class="clr-row users-data-grid" *ngIf="model">
+  <div class="clr-col-lg-12">
+  <clr-datagrid>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Firstname</clr-dg-column>
+    <clr-dg-column>Lastname</clr-dg-column>
+    <clr-dg-column>E-Mail</clr-dg-column>
+    <clr-dg-column>Status</clr-dg-column>
+
+    <clr-dg-row *ngFor="let user of model">
+      <clr-dg-cell><a [routerLink]="[user._id]">{{user.username}}</a></clr-dg-cell>
+      <clr-dg-cell>{{user.firstname}}</clr-dg-cell>
+      <clr-dg-cell>{{user.lastname}}</clr-dg-cell>
+      <clr-dg-cell>{{user.email}}</clr-dg-cell>
+      <clr-dg-cell>{{user.status}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} users
+      <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+    </clr-dg-footer>
+  </clr-datagrid>
+</div>
+</div>

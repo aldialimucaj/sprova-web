@@ -1,0 +1,37 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-md-8 ">
+    <span class="title">Projects</span>
+  </div>
+  <div class="clr-col-md-4">
+    <clr-dropdown class="controls-pane">
+      <button clrDropdownTrigger type="button" class="dropdown-toggle">
+        <clr-icon shape="cog" size="24"></clr-icon>
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+        <h4 class="dropdown-header">Projects</h4>
+        <a clrDropdownItem [routerLink]="['/projects/edit']">Add Project</a>
+      </clr-dropdown-menu>
+    </clr-dropdown>
+  </div>
+</div>
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-md-12 ">
+    <clr-datagrid>
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+
+      <clr-dg-row *ngFor="let project of model">
+        <clr-dg-cell>
+          <a [routerLink]="[project._id]">{{project.title}}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>{{project.description}}</clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="model">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} projects
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

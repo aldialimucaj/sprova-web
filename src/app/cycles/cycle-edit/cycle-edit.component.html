@@ -1,0 +1,90 @@
+<form clrForm [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" [hidden]="submitted">
+  <!-- INFO -->
+  <section class="form-block">
+    <label>General Information</label>
+    <!-- TITLE -->
+    <div class="form-group">
+      <label for="cycleTitle">Title</label>
+      <label for="cycleTitle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+        [class.invalid]="!valid('title')">
+        <input type="text" id="cycleTitle" placeholder="Enter cycle title" required formControlName="title">
+        <span class="tooltip-content">
+          Title is Required.
+        </span>
+      </label>
+    </div>
+    <!-- DESCRIPTION -->
+    <div class="form-group">
+      <label for="cycleDescription">Description</label>
+      <label for="cycleDescription" aria-haspopup="true" role="tooltip"
+        class="description-label tooltip tooltip-validation tooltip-md description"
+        [class.invalid]="!valid('description')">
+        <textarea type="text" id="cycleDescription" rows="3" placeholder="Enter Description" class="description-field"
+          formControlName="description">
+                </textarea>
+        <span class="tooltip-content">
+          Description is Required.
+        </span>
+      </label>
+    </div>
+    <!-- STATUS -->
+    <div class="form-group">
+      <label for="cycleStatus">Status</label>
+      <label for="cycleStatus" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+        [class.invalid]="!valid('status')">
+        <div class="select select-field-key">
+          <select formControlName="status">
+            <option *ngFor="let type of statusTypes" [value]="type">{{type}}</option>
+          </select>
+        </div>
+        <span class="tooltip-content">
+          Status is Required.
+        </span>
+      </label>
+    </div>
+
+    <!-- REMARKS -->
+    <div class="form-group">
+      <label for="cycleRemarks">Remarks</label>
+      <label for="cycleRemarks" aria-haspopup="true" role="tooltip"
+        class="description-label tooltip tooltip-validation tooltip-md description"
+        [class.invalid]="!valid('description')">
+        <textarea type="text" id="cycleRemarks" rows="3" placeholder="Enter Remarks" class="remarks-field"
+          formControlName="remarks">
+              </textarea>
+      </label>
+    </div>
+
+  </section>
+  <!-- Extra Fields -->
+
+  <section class="form-block">
+    <label>Custom Fields
+    </label>
+    <div formArrayName="extraFields">
+      <div class="form-group" *ngFor="let field of extraFields.controls; let i=index" [formGroupName]="i">
+        <label for="extraFields{{i}}">{{field.value.title}} <span
+            style="color: darkgrey">{{field.value.key}}</span></label>
+        <div class="clr-col-lg-12" [formGroup]="form">
+          <input id="extraFields{{i}}" type="text" placeholder="Field title" formControlName="{{field.value.key}}">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Cases -->
+  <section class="form-block section-edit" *ngIf="model">
+    <label>Fields</label>
+    <div class="form-group">
+      <label for="cycleTestCases">Test Cases</label>
+      <div class="testcase-grid controls-pane">
+        <sprova-testcase-selection *ngIf="testCases" id="cycleTestCases" [model]="testCases" [(selected)]="selectedTestCases"
+          [loading]="testCasesLoading">
+        </sprova-testcase-selection>
+      </div>
+    </div>
+  </section>
+
+  <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+  <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+</form>

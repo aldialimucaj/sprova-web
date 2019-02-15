@@ -1,0 +1,86 @@
+<div id="report-content" *ngIf="model">
+  <h1 class="report-title">{{model.cycle.title}}</h1>
+  <h4>{{model.cycle.description}}</h4>
+  <h4>Status: <span class="label" [ngClass]="{'label-success': model.cycle.status=='Finished','label-warning': model.cycle.status=='Planned','label-purple': model.cycle.status=='Abandoned','label-light-blue': model.cycle.status=='Active'}">{{model.cycle.status}}</span></h4>
+
+  <section id="testset-section">
+    <h3>Test sets</h3>
+    <div class="clr-row">
+      <div class="clr-col-xs-12 clr-col-md-12 clr-col-lg-12 clr-col-xl-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="left">Test set title</th>
+              <th>Created</th>
+              <th>Updated</th>
+              <th>Test cases</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let testset of model.testsets">
+              <td class="left">{{testset.title}}</td>
+              <td>{{testset.createdAt | amCalendar}}</td>
+              <td>{{testset.updatedAt | amCalendar}}</td>
+              <td>{{testset.testCases.length}}</td>
+              <td><span class="label" [ngClass]="{'label-success': testset.status=='Active','label-warning': testset.status=='Abandoned','label-purple': testset.status=='Finished','label-light-blue': testset.status=='Planned'}">{{testset.status}}</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="testcase-section">
+    <h3>Test cases</h3>
+    <div class="clr-row">
+      <div class="clr-col-xs-12 clr-col-md-12 clr-col-lg-12 clr-col-xl-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="left">Title</th>
+              <th>User</th>
+              <th>Execution type</th>
+              <th>Last updated</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let execution of testCasesStatus">
+              <td class="left">{{execution.title}}</td>
+              <td>{{execution.user.username }}</td>
+              <td>{{execution.executionType }}</td>
+              <td><span *ngIf="execution.updatedAt">{{execution.updatedAt | amCalendar}}</span></td>
+              <td><span class="label" [ngClass]="{'label-success': execution.status=='SUCCESSFUL', 'label-danger': execution.status=='FAILED', 'label-warning': execution.status=='PENDING', 'label-info': execution.status=='WORKING'}">{{execution.status}}</span></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- {{model | json}} -->
+</div>
+
+
+
+<!-- In case no model found -->
+<div class="clr-row" *ngIf="!model && loading">
+  Loading...
+</div>
+<div class="clr-row" *ngIf="!model && !loading">
+  <div class="alert alert-danger">
+    <div class="alert-items">
+      <div class="alert-item static">
+        <div class="alert-icon-wrapper">
+          <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+        </div>
+        <span class="alert-text">
+          Model was not found, or you have no access rights!
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.title {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-size: 1.5vw;
+}
+
+.pass-fail {
+    text-align: right;
+}
+
+.navigation-footer {
+    padding-top: 2rem;
+    .btn-info {
+        max-width: none;
+        width: 100%;
+    }
+    .next-test {
+        text-align: right;
+        
+    }
+}
+
+.area-padding {
+    padding-top: 2rem;
+}

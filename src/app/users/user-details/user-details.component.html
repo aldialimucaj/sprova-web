@@ -1,0 +1,11 @@
+<div class="clr-row" *ngIf="model">
+  <section>
+    <span *ngIf="model.admin" class="label label-success">Admin</span>
+    
+    <strong>{{model.firstname}} {{model.lastname}}</strong>
+    <p>
+      {{model.email}}
+    </p>
+  </section>
+
+</div>

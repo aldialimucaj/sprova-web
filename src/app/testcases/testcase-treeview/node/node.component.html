@@ -1,0 +1,10 @@
+<clr-tree-node *ngFor="let element of treeElements" >
+  <button class="clr-treenode-link" [class.active]="element.active" type="button" *ngIf="element.children && element.children.length !== 0"
+  (click)="updateSelection(element)">
+    <clr-icon shape="folder"></clr-icon>
+    {{element.title}}
+  </button>
+  <ng-template *ngIf="element.children && element.children.length !== 0" [(clrIfExpanded)]="element.expanded">
+    <sprova-node [treeElements]="element.children" (onModelUpdate)="onModelUpdate.emit($event)"></sprova-node>
+  </ng-template>
+</clr-tree-node>

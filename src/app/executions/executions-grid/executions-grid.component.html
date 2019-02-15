@@ -1,0 +1,36 @@
+<clr-datagrid *ngIf="executions && !loading" class="testcase-grid">
+  <clr-dg-column>Execution ID</clr-dg-column>
+  <clr-dg-column [clrDgField]="'createdAt'">Created at</clr-dg-column>
+  <clr-dg-column [clrDgField]="'updatedAt'">Updated at</clr-dg-column>
+  <clr-dg-column>Execution Type</clr-dg-column>
+  <clr-dg-column>Duration</clr-dg-column>
+  <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let execution of executions">
+    <!-- ID -->
+    <clr-dg-cell>
+      <a [routerLink]="['/projects', projectId, 'executions',execution._id]">{{execution._id}}</a>
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{execution.createdAt | amCalendar}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{execution.updatedAt | amCalendar}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{execution.executionType}}
+    </clr-dg-cell>
+    <clr-dg-cell>
+      {{execution.updatedAt | amDifference: execution.createdAt :'seconds' : true}} Seconds
+    </clr-dg-cell>
+    <!-- STATUS-->
+    <clr-dg-cell>
+      <span class="label" [ngClass]="{'label-success': execution.status=='SUCCESSFUL', 'label-danger': execution.status=='FAILED', 'label-warning': execution.status=='PENDING', 'label-info': execution.status=='WORKING'}">{{execution.status}}</span>
+    </clr-dg-cell>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} executions
+    <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="executions.length"></clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

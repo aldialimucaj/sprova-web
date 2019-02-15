@@ -1,0 +1,24 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-md-10 offset-md-1">
+    <clr-datagrid>
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+      <clr-dg-column>Status</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let execution of model">
+        <clr-dg-cell>
+          <a [routerLink]="[execution._id]">{{execution.title}}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>{{execution.description}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span class="label" [ngClass]="{'label-success': execution.status=='SUCCESSFUL','label-warning': execution.status=='PENDING','label-danger': execution.status=='FAILED'}">{{execution.status}}</span>
+        </clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="model">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} executions
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" (clrDgPage)="skip" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

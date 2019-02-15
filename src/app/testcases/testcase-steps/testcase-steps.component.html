@@ -1,0 +1,16 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th class="left">Action</th>
+        <th class="left">Payload</th>
+        <th class="left">Expected</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let step of steps">
+        <td class="left">{{step.action}}</td>
+        <td class="left">{{step.payload}}</td>
+        <td class="left">{{step.expected}}</td>
+      </tr>
+    </tbody>
+  </table>

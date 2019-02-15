@@ -1,0 +1,128 @@
+<div class="clr-row" *ngIf="execution">
+    <div class="clr-col-lg-8">
+        <div class="title">{{execution.title}}
+            <clr-icon shape="check-circle" class="is-success" size="32" *ngIf="execution.status ==='SUCCESSFUL'"></clr-icon>
+            <clr-icon shape="times-circle" class="is-danger" size="32" *ngIf="execution.status ==='FAILED'"></clr-icon>
+        </div>
+        <div class="description">
+            {{execution.description}}
+        </div>
+    </div>
+    <div class="clr-col-lg-4 clr-col-md-12 pass-fail">
+        <button (click)="pass()" class="btn btn-success" [disabled]="isFormDisabled()">Pass</button>
+        <button (click)="fail()" class="btn btn-danger" [disabled]="isFormDisabled()">Fail</button>
+    </div>
+    <div class="clr-col-md-12 ">
+
+        <clr-tabs>
+            <clr-tab>
+                <button clrTabLink>Execution</button>
+                <ng-template [(clrIfActive)]="executionActive">
+                    <clr-tab-content>
+                        <section>
+                            <!-- TEST STEPS -->
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="left">Action</th>
+                                        <th class="left">Payload</th>
+                                        <th class="left">Expected</th>
+                                        <th class="left">Comment</th>
+                                        <th>Commit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let step of execution.testSteps; let i=index">
+                                        <td class="left">{{step.action}}</td>
+                                        <td class="left">{{step.payload}}
+                                            <clr-icon class="has-badge hand" shape="attachment" (click)="dowload(artifact)"
+                                                *ngFor="let artifact of step.artifacts; let i=index"> </clr-icon>
+                                        </td>
+                                        <td class="left">{{step.expected}}</td>
+                                        <td class="left">
+                                            <input type="text" placeholder="Comment" [(ngModel)]="step.comment"
+                                                [disabled]="isStepDisabled(i)">
+                                            <button type="button" class="btn btn-icon btn-link" [disabled]="isStepDisabled(i)">
+                                                <clr-icon shape="upload" (click)="triggerFileInput($event, i)">
+                                                </clr-icon>
+                                            </button>
+                                            <input id="fileInput-{{i}}" type="file" (change)="filesChange($event, i)"
+                                                placeholder="Upload file" accept="*" multiple="true" hidden="true"
+                                                [disabled]="isStepDisabled(i)">
+                                        </td>
+                                        <td>
+                                            <button (click)="passStep(i)" class="btn btn-sm btn-success" [disabled]="isStepDisabled(i)">Pass</button>
+                                            <button (click)="failStep(i)" class="btn btn-sm btn-danger" [disabled]="isStepDisabled(i)">Fail</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </clr-tab-content>
+                </ng-template>
+            </clr-tab>
+
+            <clr-tab>
+                <button clrTabLink>Step details</button>
+                <ng-template [(clrIfActive)]="detailsActive">
+                    <clr-tab-content>
+                        <section *ngIf="currentStep">
+                            <div class="progress" [ngClass]="{'success': execution.status=='WORKING', 'danger': execution.status=='FAILED'}">
+                                <progress max="100" [value]="getStepsFullfilled()">
+                                </progress>
+                            </div>
+                        </section>
+                        <section *ngIf="currentStep">
+                            <p>
+                                {{currentStep.action}}
+                            </p>
+                            <p>
+                                {{currentStep.expected}}
+                            </p>
+                            <p>
+                                <textarea type="text" placeholder="Comment" [(ngModel)]="currentStep.comment"></textarea>
+                            </p>
+                            <div class="center area-padding">
+                                <file-drop headertext="Drag and Drop files here" (onFileDrop)="dropped($event)"
+                                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                                </file-drop>
+                            </div>
+                            <div class="clr-row area-padding">
+                                <div class="clr-col-lg-3 clr-col-md-6 clr-col-sm-6 clr-col-xs-12" *ngFor="let item of currentStep.artifacts; let i=index">
+                                    <a [href]="getImageFullPath(i)" class="card clickable" target="new">
+                                        <div class="card-img">
+                                            <img [src]="getImageFullPath(i)">
+                                        </div>
+                                    </a>
+                                    <div class="card-footer">
+                                        {{item.filename}}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    </clr-tab-content>
+                </ng-template>
+            </clr-tab>
+
+            <clr-tab>
+                <button clrTabLink>Previous steps</button>
+                <ng-template [(clrIfActive)]="previousStepsActive">
+                    <clr-tab-content>
+                        <sprova-testcase-steps [testCaseId]="execution.testCaseId"></sprova-testcase-steps>
+                    </clr-tab-content>
+                </ng-template>
+            </clr-tab>
+
+            <clr-tab>
+                <button clrTabLink>History</button>
+                <ng-template [(clrIfActive)]="historyActive">
+                    <clr-tab-content>
+                        <sprova-execution-pie [testCaseId]="execution.testCaseId" [cycleId]="cycleId"></sprova-execution-pie>
+                    </clr-tab-content>
+                </ng-template>
+            </clr-tab>
+
+        </clr-tabs>
+    </div>
+</div>

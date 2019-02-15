@@ -1,0 +1,128 @@
+<div class="clr-row">
+  <div class="clr-col-lg-12">
+    <form clrForm [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" [hidden]="submitted">
+      <!-- Info -->
+      <section class="form-block">
+        <label>General Information</label>
+        <div class="form-group">
+          <label for="testcaseTitle">Title</label>
+          <label for="testcaseTitle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md"
+            [class.invalid]="!valid('title')">
+            <input type="text" id="testcaseTitle" placeholder="Enter testcase title" required formControlName="title">
+            <span class="tooltip-content">
+              Title is Required.
+            </span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="testcaseParent">Parent ID</label>
+          <input *ngIf="!parentId" type="text" id="testcaseParent" placeholder="No parent ID" formControlName="parentId">
+          <span *ngIf="parentId">
+            <a [routerLink]="['/projects', projectId, 'testcases', parentId]">{{parentId}}</a>
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="testcaseDescription">Description</label>
+          <label for="testcaseDescription" aria-haspopup="true" role="tooltip" class="description-label tooltip tooltip-validation tooltip-md description"
+            [class.invalid]="!valid('description')">
+            <textarea type="text" id="testcaseDescription" required placeholder="Enter Description" class="description-field"
+              formControlName="description">
+                </textarea>
+            <span class="tooltip-content">
+              Description is Required.
+            </span>
+          </label>
+        </div>
+        <section class="form-block">
+          <div class="form-group">
+            <label for="testcaseExecutable">Executable</label>
+            <div class="toggle-switch">
+              <input type="checkbox" id="testcaseExecutable" placeholder="Should be executed" formControlName="executable">
+              <label for="testcaseExecutable"></label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="testcaseExecutionType">Execution type</label>
+            <div class="select">
+              <select id="testcaseExecutionType" formControlName="executionType">
+                <option>AUTOMATED</option>
+                <option>MANUAL</option>
+                <option>MANUAL_AUTOMATED</option>
+              </select>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Extra Fields -->
+
+      <section class="form-block">
+        <label>Custom Fields
+        </label>
+        <div formArrayName="extraFields">
+          <div class="form-group" *ngFor="let field of extraFields.controls; let i=index" [formGroupName]="i">
+            <label for="extraFields{{i}}">{{field.value.title}}
+              <span style="color: darkgrey">{{field.value.key}}</span>
+            </label>
+            <div class="clr-col-lg-12" [formGroup]="form">
+              <input id="extraFields{{i}}" type="text" placeholder="Field title" formControlName="{{field.value.key}}">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fields -->
+      <section class="form-block">
+        <label>Fields</label>
+
+        <div class="form-group">
+          <label for="cycleFields">Test Steps </label>
+          <div class="clr-col-lg-12" formArrayName="testSteps">
+            <div class="clr-row" *ngFor="let field of testSteps.controls; let i=index" [formGroupName]="i">
+              <div class="clr-col-xl-4 clr-col-lg-12">
+                <input type="text" placeholder="Step action" formControlName="action" size="45">
+              </div>
+              <div class="clr-col-xl-4 clr-col-lg-12">
+
+                <div class="payload">
+                  <div class="input-field" *ngIf="!field.get('artifacts').value">
+                    <input type="text" placeholder="Payload" formControlName="payload"  size="45">
+                  </div>
+
+                  <div class="artifacts select" *ngIf="field.get('artifacts').value">
+                    <div class="select-element">
+                      <select formArrayName="artifacts" #selectArtifact{{i}} (change)="selectedForDelete(i, $event.srcElement.value)">
+                        <option *ngFor="let artifact of field.get('artifacts').value; let aIdx=index">{{artifact._id}}</option>
+                      </select>
+                    </div>
+                    <div class="delete hand" (click)="deleteSelectedArtifact(field, i)">
+                      <clr-icon shape="trash"></clr-icon>
+                    </div>
+                  </div>
+                  <div class="attachment hand">
+                    <clr-icon shape="upload" (click)="triggerFileInput($event, i)"> </clr-icon>
+                  </div>
+
+                  <input id="fileInput-{{i}}" type="file" (change)="filesChange($event, i)" placeholder="Upload file"
+                    accept="*" multiple="true" hidden="true">
+                </div>
+              </div>
+
+
+              <div class="clr-col-xl-4 clr-col-lg-12">
+                <input type="text" placeholder="Expected outcome" formControlName="expected" size="45">
+              </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-icon" (click)="addStep()">
+              <clr-icon shape="plus"></clr-icon>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+      <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>

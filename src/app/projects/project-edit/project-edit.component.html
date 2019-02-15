@@ -1,0 +1,80 @@
+<div class="clr-row" *ngIf="!loading">
+  <div class="clr-col-lg-12">
+    <form clrForm [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()" [hidden]="submitted">
+      <!-- Info -->
+      <section class="form-block">
+        <label>General Information</label>
+        <div class="form-group">
+          <label for="projectTitle">Title</label>
+          <label for="projectTitle" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="!valid('title')">
+            <input type="text" id="projectTitle" placeholder="Enter project title" required formControlName="title">
+            <span class="tooltip-content">
+              Title is Required.
+            </span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="projectDescription">Description</label>
+          <label for="projectDescription" aria-haspopup="true" role="tooltip" class="description-label tooltip tooltip-validation tooltip-md description"
+            [class.invalid]="!valid('description')">
+            <textarea type="text" id="projectDescription" required placeholder="Enter Description" class="description-field" formControlName="description">
+                </textarea>
+            <span class="tooltip-content">
+              Description is Required.
+            </span>
+          </label>
+        </div>
+
+      </section>
+      <!-- Fields -->
+      <section class="form-block">
+        <label>Custom Fields
+        </label>
+        <div class="form-group">
+          <label for="cycleFields">Cycle Fields
+
+          </label>
+          <div formArrayName="cycleFields">
+            <div class="clr-col-lg-12" *ngFor="let field of cycleFields.controls; let i=index" [formGroupName]="i">
+              <input type="text" placeholder="Field title" formControlName="title" (change)="updateFieldKey(field)">
+              <div class="select select-field-key">
+                <select formControlName="type">
+                  <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+              </div>
+              <clr-icon shape="trash" class="hand" (click)="removeExtraCycleField(i)"></clr-icon>
+            </div>
+            <button type="button" class="btn btn-sm btn-icon" (click)="addExtraCycleField()">
+              <clr-icon shape="plus"></clr-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="testCaseFields">Test Case Fields
+
+          </label>
+          <div formArrayName="testCaseFields">
+            <div class="clr-col-lg-12" *ngFor="let field of testCaseFields.controls; let i=index" [formGroupName]="i">
+              <input type="text" placeholder="Field title" formControlName="title" (change)="updateFieldKey(field)">
+              <div class="select select-field-key">
+                <select formControlName="type">
+                  <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+              </div>
+              <clr-icon shape="trash" class="hand" (click)="removeExtraTestCaseField(i)"></clr-icon>
+            </div>
+            <button type="button" class="btn btn-sm btn-icon" (click)="addExtraTestCaseField()">
+              <clr-icon shape="plus"></clr-icon>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SAVE - CANCEL -->
+      <section class="form-block">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Save</button>
+      </section>
+    </form>
+  </div>
+</div>
