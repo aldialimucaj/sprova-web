@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap, map } from 'rxjs/operators';
-import { CycleService, TestSetExecutionService, NavigatorService, ExecutionService, TestSetService, ArtifactService } from '../../_services/index';
+import { CycleService, TestSetExecutionService, NavigatorService, ExecutionService } from '../../_services/index';
 import { Cycle, Execution } from '../../_models';
 import { combineLatest } from 'rxjs';
 

@@ -50,6 +50,7 @@ import { CycleReportComponent } from './reports/cycle-report/cycle-report.compon
 import { TestsetReportComponent } from './reports/testset-report/testset-report.component';
 import { ExecutionSingleComponent } from './executions/execution-single/execution-single.component';
 import { TestSetExecutionsComponent } from "./testsets/testset-executions/testset-executions.component";
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 describe('AppComponent', () => {
@@ -120,11 +121,13 @@ describe('AppComponent', () => {
                 FileDropModule,
                 ROUTING
             ],
+
             providers: [{ provide: APP_BASE_HREF, useValue: '/' },
                 AuthGuard,
                 AuthenticationService,
                 UserService,
-                ProjectService]
+                ProjectService],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
         });
 
         fixture = TestBed.createComponent(AppComponent);
