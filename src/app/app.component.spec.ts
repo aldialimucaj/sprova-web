@@ -49,6 +49,7 @@ import { ProjectReportComponent } from './reports/project-report/project-report.
 import { CycleReportComponent } from './reports/cycle-report/cycle-report.component';
 import { TestsetReportComponent } from './reports/testset-report/testset-report.component';
 import { ExecutionSingleComponent } from './executions/execution-single/execution-single.component';
+import { TestSetExecutionsComponent } from "./testsets/testset-executions/testset-executions.component";
 
 
 describe('AppComponent', () => {
@@ -90,6 +91,7 @@ describe('AppComponent', () => {
                 TestSetsComponent,
                 TestSetsEditComponent,
                 TestSetsDetailsComponent,
+                TestSetExecutionsComponent,
                 ExecutionSetComponent,
                 TestcaseSelectionComponent,
                 TestcaseTreeviewComponent,
