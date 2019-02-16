@@ -8,13 +8,15 @@ import { ProjectService, NavigatorService, AuthenticationService } from "../../_
 
 import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ProjectEditComponent', () => {
   let component: ProjectEditComponent;
   let fixture: ComponentFixture<ProjectEditComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [ProjectEditComponent],
       providers: [
         ProjectService,

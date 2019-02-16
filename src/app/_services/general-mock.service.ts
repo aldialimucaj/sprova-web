@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 
-import { Queryable } from "app/_models";
+import { Queryable } from "../_models";
 
 @Injectable()
-export class MockUserService implements Queryable {
+export class GeneralMockService implements Queryable {
 
   public _testData: any;
 
+
+  public listModelsByFilter<T>(values: any, limit: number, skip: number) {
+    return empty();
+  }
 
   /* ************************************************************************* */
   public listModels(limit: number, skip: number) {
@@ -15,6 +19,10 @@ export class MockUserService implements Queryable {
       observer.next(this._testData);
       observer.complete();
     });
+  }
+
+  public fetchAll(limit: number, skip: number) {
+    return this.listModels(limit, skip);
   }
 
   /* ************************************************************************* */

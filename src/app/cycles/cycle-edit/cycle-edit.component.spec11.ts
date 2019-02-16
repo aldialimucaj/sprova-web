@@ -8,13 +8,15 @@ import { CycleService, NavigatorService, AuthenticationService } from "../../_se
 
 import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CycleEditComponent', () => {
   let component: CycleEditComponent;
   let fixture: ComponentFixture<CycleEditComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [CycleEditComponent],
       providers: [
         CycleService,

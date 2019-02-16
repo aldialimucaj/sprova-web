@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { TestCaseService, NavigatorService, AuthenticationService } from "../../_services";
 
 import { MomentModule } from 'ngx-moment';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 describe('TestCaseDetailsComponent', () => {
@@ -14,7 +15,8 @@ describe('TestCaseDetailsComponent', () => {
   let fixture: ComponentFixture<TestCaseDetailsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [TestCaseDetailsComponent],
       providers: [
         TestCaseService,

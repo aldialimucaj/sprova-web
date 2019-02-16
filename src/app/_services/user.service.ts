@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Queryable, User, InsertResponse, RemoveResponse } from "app/_models";
+import { Queryable, User, InsertResponse, RemoveResponse } from "../_models";
 import { API } from '../../environments/environment';
-import { QueryableImpl } from 'app/_services/queryable-implementation';
+import { QueryableImpl } from '../_services/queryable-implementation';
 
 @Injectable()
 export class UserService extends QueryableImpl {
@@ -14,7 +14,7 @@ export class UserService extends QueryableImpl {
   }
 
   /* ************************************************************************* */
-  fetchAll(limit?: number, skip?: number) {
+  public fetchAll(limit?: number, skip?: number) {
     return super.listModels<User[]>(limit, skip);
   }
 

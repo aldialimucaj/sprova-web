@@ -8,7 +8,7 @@ import { UsersComponent } from './users.component';
 import { Queryable } from "app/_models";
 import { Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { MockUserService } from "./test/mock-user.service";
+import { GeneralMockService } from "../_services/general-mock.service";
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -24,7 +24,7 @@ describe('UsersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UsersComponent],
       providers: [
-        { provide: UserService, useClass: MockUserService }
+        { provide: UserService, useClass: GeneralMockService }
       ],
       imports: [
         RouterTestingModule,
@@ -42,14 +42,14 @@ describe('UsersComponent', () => {
   });
 
   it('should be created', () => {
-    userService._testData = defaultData;
+    userService['_testData'] = defaultData;
     component.loading = false;
     fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
   it('should display table', () => {
-    userService._testData = defaultData;
+    userService['_testData'] = defaultData;
     component.loading = false;
     fixture.detectChanges();
     let el = fixture.debugElement.query(By.css('.users-data-grid')).nativeElement;
@@ -57,7 +57,7 @@ describe('UsersComponent', () => {
   });
 
   it('should display table with 2 users', () => {
-    userService._testData = defaultData1;
+    userService['_testData'] = defaultData1;
     component.loading = false;
     fixture.detectChanges();
     let el = fixture.debugElement.query(By.css('.users-data-grid')).nativeElement;

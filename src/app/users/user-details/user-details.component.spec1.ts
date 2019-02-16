@@ -1,10 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from "@angular/common/http";
-import { ClarityModule } from '@clr/angular';
 import { UserDetailsComponent } from './user-details.component';
 import { UserService } from "../../_services";
-import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
+
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService } from '../../_services/index';
+import { ClarityModule } from '@clr/angular';
+
 
 
 describe('UserDetailsComponent', () => {
@@ -13,12 +17,10 @@ describe('UserDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UserDetailsComponent],
-      imports: [
-        HttpClientModule,
-        RouterTestingModule,
-        ClarityModule
-      ]
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [RouterTestingModule, ClarityModule, HttpClientModule],
+      providers: [ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService],
+      declarations: [UserDetailsComponent]
     })
       .compileComponents();
   }));

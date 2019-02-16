@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ClarityModule } from '@clr/angular';
 import { MockQueryableService } from "../../_utils";
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('TestcasesGridComponent', () => {
   let component: TestcasesGridComponent;
   let fixture: ComponentFixture<TestcasesGridComponent>;
@@ -13,7 +14,8 @@ describe('TestcasesGridComponent', () => {
   const defaultData = [];
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [ TestcasesGridComponent ],
        providers: [
         { provide: CycleService, useClass: MockQueryableService },

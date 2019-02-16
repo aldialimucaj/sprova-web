@@ -8,13 +8,15 @@ import { TestCaseService, NavigatorService, AuthenticationService } from "../../
 
 import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TestCaseEditComponent', () => {
   let component: TestCaseEditComponent;
   let fixture: ComponentFixture<TestCaseEditComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [TestCaseEditComponent],
       providers: [
         TestCaseService,

@@ -22,7 +22,7 @@ export class TestSetsComponent implements OnInit {
     public testSetsService: TestSetService,
     public navigatorService: NavigatorService,
     public testSetExecutionService: TestSetExecutionService
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.route
@@ -30,13 +30,15 @@ export class TestSetsComponent implements OnInit {
       .subscribe(params => {
         this.projectId = params.projectId;
         this.cycleId = params.cycleId;
-        this.cycleService.fetchOne(this.cycleId).pipe(mergeMap(data => {
-          this.cycleModel = data;
-          return this.testSetsService.listModelsByFilter<TestSet[]>({ cycleId: this.cycleId }, 0, 0);
-        })).subscribe(data  => {
-          this.testSetModel = data;
-          this.loading = false;
-        });
+        if (this.cycleId) {
+          this.cycleService.fetchOne(this.cycleId).pipe(mergeMap(data => {
+            this.cycleModel = data;
+            return this.testSetsService.listModelsByFilter<TestSet[]>({ cycleId: this.cycleId }, 0, 0);
+          })).subscribe(data => {
+            this.testSetModel = data;
+            this.loading = false;
+          });
+        }
 
       });
   }

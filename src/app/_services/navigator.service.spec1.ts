@@ -8,6 +8,7 @@ import { BaseRequestOptions, ConnectionBackend, Http, RequestOptions } from '@an
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from "rxjs";
 import { HttpClientModule } from '@angular/common/http';
+import { ClarityModule } from '@clr/angular';
 
 @Injectable()
 export class MockAuthenticationService extends AuthenticationService {
@@ -24,7 +25,7 @@ describe('NavigatorService', () => {
         { provide: ConnectionBackend, useClass: MockBackend },
         { provide: RequestOptions, useClass: BaseRequestOptions },
         { provide: AuthenticationService, useClass: MockAuthenticationService }],
-      imports: [RouterTestingModule, HttpClientModule]
+      imports: [RouterTestingModule, ClarityModule, HttpClientModule]
     });
   });
 

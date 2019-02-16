@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ExecutionService, NavigatorService, AuthenticationService } from "../../_services";
 
 import { MomentModule } from 'ngx-moment';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 describe('ExecutionDetailsComponent', () => {
@@ -14,7 +15,8 @@ describe('ExecutionDetailsComponent', () => {
   let fixture: ComponentFixture<ExecutionDetailsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [ExecutionDetailsComponent],
       providers: [
         ExecutionService,

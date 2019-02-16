@@ -10,13 +10,15 @@ import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ExecutionManuallyComponent } from './execution-manually.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ExecutionManuallyComponent', () => {
   let component: ExecutionManuallyComponent;
   let fixture: ComponentFixture<ExecutionManuallyComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [ExecutionManuallyComponent],
       providers: [
         ExecutionService,

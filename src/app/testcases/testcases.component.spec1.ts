@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { TestCaseService, NavigatorService } from "../_services";
 import { MockQueryableService, MockNavigatorService } from "../_utils";
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TestCasesComponent', () => {
   let component: TestCasesComponent;
@@ -16,7 +17,8 @@ describe('TestCasesComponent', () => {
   const twoTestCasesData = [{_id:"1", title:"foo"},{_id:"2", title:"bar"}];
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [TestCasesComponent],
       providers: [
         { provide: TestCaseService, useClass: MockQueryableService },

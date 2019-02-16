@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Injectable, ReflectiveInjector } from '@angular/core';
+import { Injectable, ReflectiveInjector, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Observable } from "rxjs";
 import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +23,8 @@ describe('LoginComponent', () => {
   let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+   TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [LoginComponent],
       providers: [
         Http,

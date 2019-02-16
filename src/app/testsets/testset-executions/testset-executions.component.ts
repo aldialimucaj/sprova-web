@@ -21,7 +21,7 @@ export class TestSetExecutionsComponent implements OnInit {
   cycleId: string;
   projectId: string;
   testSetId: string;
-  testSetExecutionId: string; 
+  testSetExecutionId: string;
 
   // aux
   type: string;
@@ -49,13 +49,17 @@ export class TestSetExecutionsComponent implements OnInit {
 
         this.type = params.type;
 
-        this.testSetExecutionService.fetchOne(this.testSetExecutionId).pipe(mergeMap(data => {
-          this.model = data;
-          this.testSetId = this.model.testSetId;
-          return this.executionService.listModelsByFilter<Execution[]>({testSetExecutionId: this.testSetExecutionId});
-        })).subscribe(data => {
-          this.executions = data;
-        });
+        if (this.testSetExecutionId) {
+          this.testSetExecutionService.fetchOne(this.testSetExecutionId).pipe(mergeMap(data => {
+            this.model = data;
+            this.testSetId = this.model.testSetId;
+            return this.executionService.listModelsByFilter<Execution[]>({ testSetExecutionId: this.testSetExecutionId });
+          })).subscribe(data => {
+            this.executions = data;
+          });
+        } else {
+          throw new Error('Cannot initialize element without testSetExecutionId')
+        }
       });
   }
 
