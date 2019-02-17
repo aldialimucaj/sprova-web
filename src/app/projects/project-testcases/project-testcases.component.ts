@@ -32,14 +32,16 @@ export class ProjectTestcasesComponent implements OnInit {
         this.testCaseId = params.testCaseId;
         let filter = { projectId: this.projectId, parentId: params.testCaseId ? params.testCaseId : null, withParentFlag: true };
 
-        this.testCaseService.listModelsByFilter<TestCase[]>(filter, 0, 0).subscribe(data => {
-          this.model = data;
-          this.folders = data.filter(test => test.isParent);
-          this.loading = false;
-          this.items = this.items.concat(this.folders);
-          this.items = this.items.concat(this.model);
+        if (this.projectId) {
+          this.testCaseService.listModelsByFilter<TestCase[]>(filter, 0, 0).subscribe(data => {
+            this.model = data;
+            this.folders = data.filter(test => test.isParent);
+            this.loading = false;
+            this.items = this.items.concat(this.folders);
+            this.items = this.items.concat(this.model);
 
-        });
+          });
+        }
 
         if (this.testCaseId) {
           this.testCaseService.getModel<TestCase>(this.testCaseId).subscribe(data => this.folder = data);
