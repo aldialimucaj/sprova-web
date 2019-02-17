@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GenericForm } from 'app/_utils';
+import { GenericForm } from '../../_utils';
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { UserService, NavigatorService } from 'app/_services';
 import { ActivatedRoute } from '@angular/router';

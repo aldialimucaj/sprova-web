@@ -21,10 +21,14 @@ export class UserDetailsComponent implements OnInit {
       .params
       .subscribe(params => {
         this.id = params.userId;
-        this.userService.getModel(this.id).subscribe(data => {
-          this.model = data;
+        if (this.id) {
+          this.userService.getModel(this.id).subscribe(data => {
+            this.model = data;
+            this.loading = false;
+          });
+        } else {
           this.loading = false;
-        });
+        }
       });
   }
 
