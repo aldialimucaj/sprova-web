@@ -36,17 +36,18 @@ export class CycleReportComponent implements OnInit {
     this.route.params
       .subscribe(params => {
         this.cycleId = params.cycleId;
-
-        let dataSource = this.reportsService.fetchCycleReport(this.cycleId);
-        dataSource.pipe(map(report => {
-          this.loading = false;
-          this.model = report;
-          this.testCasesStatus = this.matchExecutions(this.model.testCases, this.model.executions);
-        }), delay(500)).subscribe(() => {
-          const ctx = document.getElementById("testcases-chart");
-          let data = this.reportsService.testCasesToChartData(this.model.testCases);
-          // this.createTestCaseLineChart(ctx, data);
-        });
+        if (this.cycleId) {
+          let dataSource = this.reportsService.fetchCycleReport(this.cycleId);
+          dataSource.pipe(map(report => {
+            this.loading = false;
+            this.model = report;
+            this.testCasesStatus = this.matchExecutions(this.model.testCases, this.model.executions);
+          }), delay(500)).subscribe(() => {
+            const ctx = document.getElementById("testcases-chart");
+            let data = this.reportsService.testCasesToChartData(this.model.testCases);
+            // this.createTestCaseLineChart(ctx, data);
+          });
+        }
       });
   }
 
@@ -79,17 +80,17 @@ export class CycleReportComponent implements OnInit {
    * @param executions array
    */
   matchExecutions(testCases: TestCase[], executions: Execution[]) {
-    let result =  testCases.map(testCase => {
-        let execution = find(executions, {'testCaseId': testCase._id});
-        if(execution){
-          return execution;
-        } else {
-          let emptyExec = new Execution(testCase._id, this.cycleId, null);
-          emptyExec.title = testCase.title;
-          emptyExec.status = ExecutionStatus.Pending;
-          emptyExec.user = new User();
-          return emptyExec;
-        }
+    let result = testCases.map(testCase => {
+      let execution = find(executions, { 'testCaseId': testCase._id });
+      if (execution) {
+        return execution;
+      } else {
+        let emptyExec = new Execution(testCase._id, this.cycleId, null);
+        emptyExec.title = testCase.title;
+        emptyExec.status = ExecutionStatus.Pending;
+        emptyExec.user = new User();
+        return emptyExec;
+      }
     });
 
 
