@@ -40,6 +40,10 @@ export class MockQueryableService implements Queryable {
     return this.listModels(0,0);
   }
 
+  public fetchOne(id: string) {
+    return empty();
+  }
+
   /* ************************************************************************* */
   public removeModel(id: string) {
     return this.listModels(0,0);

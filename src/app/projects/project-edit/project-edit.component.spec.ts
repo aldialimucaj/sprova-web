@@ -9,6 +9,7 @@ import { ProjectService, NavigatorService, AuthenticationService } from '../../_
 import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockQueryableService } from '../../_utils';
 
 describe('ProjectEditComponent', () => {
   let component: ProjectEditComponent;
@@ -19,7 +20,8 @@ describe('ProjectEditComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ProjectEditComponent],
       providers: [
-        ProjectService,
+        { provide: ProjectService, useClass: MockQueryableService },      
+
         NavigatorService,
         AuthenticationService
       ],
