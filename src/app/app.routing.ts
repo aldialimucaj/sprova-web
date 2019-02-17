@@ -6,7 +6,6 @@
 import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 
 import { AuthGuard } from './_guards/index';
@@ -34,7 +33,6 @@ import { TestSetExecutionsComponent } from './testsets/testset-executions/testse
 export const ROUTES: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'about', component: AboutComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
 
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
