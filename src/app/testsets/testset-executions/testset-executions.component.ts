@@ -56,9 +56,10 @@ export class TestSetExecutionsComponent implements OnInit {
             return this.executionService.listModelsByFilter<Execution[]>({ testSetExecutionId: this.testSetExecutionId });
           })).subscribe(data => {
             this.executions = data;
+            this.loading = false;
           });
         } else {
-          throw new Error('Cannot initialize element without testSetExecutionId')
+          this.loading = false;
         }
       });
   }
