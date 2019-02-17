@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { TestCase, Cycle, TreeNode } from 'app/_models';
-import { TestCaseService, TreeUtilsService } from 'app/_services';
+import { TestCase, Cycle, TreeNode } from '../../_models';
+import { TestCaseService, TreeUtilsService } from '../../_services';
 import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'sprova-testcase-treeview',

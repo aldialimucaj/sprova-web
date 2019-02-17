@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericForm } from '../../_utils';
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { UserService, NavigatorService } from 'app/_services';
+import { UserService, NavigatorService } from '../../_services';
 import { ActivatedRoute } from '@angular/router';
-import { User } from 'app/_models';
+import { User } from '../../_models';
 
 @Component({
   selector: 'sprova-user-edit',

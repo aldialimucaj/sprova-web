@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectService, CycleService, NavigatorService, TestSetService, TestSetExecutionService } from "app/_services";
+import { ProjectService, CycleService, NavigatorService, TestSetService, TestSetExecutionService } from "../../_services";
 import { TestSet, TestSetExecution } from '../../_models';
 
 @Component({
