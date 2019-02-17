@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CycleService, TestSetExecutionService, NavigatorService, ExecutionService, TestSetService, TestCaseService, ProjectService } from '../../_services/index';
-import { Execution, TestCase, Project, ExecutionType, ExecutionStatus } from 'app/_models';
-import { ViewType } from 'app/testcases/testcases-grid/testcases-grid.component';
+import { CycleService, TestSetExecutionService, NavigatorService, ExecutionService, TestSetService } from '../../_services/index';
+import { Execution, TestCase, Project, ExecutionType, ExecutionStatus } from '../../_models';
+import { ViewType } from '../../testcases/testcases-grid/testcases-grid.component';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { find } from "lodash";

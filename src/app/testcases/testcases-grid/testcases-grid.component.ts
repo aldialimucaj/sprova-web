@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { TestCase } from 'app/_models';
-import { TestCaseService } from 'app/_services';
+import { TestCase } from '../../_models';
+import { TestCaseService } from '../../_services';
 import { ActivatedRoute } from '@angular/router';
 import { findIndex } from 'lodash';
 

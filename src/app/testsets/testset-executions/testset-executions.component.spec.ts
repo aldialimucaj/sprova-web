@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService} from '../../_services/index';
 import { ClarityModule } from '@clr/angular';
 import { MomentModule } from 'ngx-moment';
+import { MockQueryableService } from '../../_utils';
 
 
 describe('TestSetExecutionsComponent', () => {
@@ -18,7 +19,9 @@ describe('TestSetExecutionsComponent', () => {
     TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       imports: [RouterTestingModule, MomentModule, ClarityModule, HttpClientModule],
-      providers: [ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService],
+      providers: [
+        { provide: TestSetExecutionService, useClass: MockQueryableService },
+        ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService],
       declarations: [ TestSetExecutionsComponent ]
     })
     .compileComponents();

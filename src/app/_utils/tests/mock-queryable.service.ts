@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, empty } from 'rxjs';
 
 import { Queryable } from "../../_models";
 
@@ -15,6 +15,10 @@ export class MockQueryableService implements Queryable {
       observer.next(this._testData);
       observer.complete();
     });
+  }
+
+  public listModelsByFilter<T>(values: any, limit: number, skip: number) {
+    return empty();
   }
 
   /* ************************************************************************* */
