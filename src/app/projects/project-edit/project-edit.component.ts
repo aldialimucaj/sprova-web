@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { camelCase } from 'lodash';
 import { GenericForm } from "../../_utils";
 import { ProjectService, NavigatorService } from '../../_services/index';
-import { Project, CycleExtraField, TestCaseExtraField, ExtraFieldType } from 'app/_models';
+import { Project, CycleExtraField, TestCaseExtraField} from '../../_models';
 
 @Component({
   selector: 'sprova-project-edit',

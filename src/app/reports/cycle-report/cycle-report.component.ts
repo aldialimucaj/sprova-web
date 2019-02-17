@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ReportsService, NavigatorService } from 'app/_services';
+import { ReportsService, NavigatorService } from '../../_services';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
 
 import { map, delay } from 'rxjs/operators';
 import { Observable, Scheduler } from 'rxjs';
-import { CycleReport, Execution, TestCase, ExecutionStatus, User } from 'app/_models';
+import { CycleReport, Execution, TestCase, ExecutionStatus, User } from '../../_models';
 import { exec } from 'child_process';
 import { find } from "lodash";
 

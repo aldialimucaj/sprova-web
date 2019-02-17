@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from "../_services";
-import { Project } from 'app/_models';
+import { Project } from '../_models';
 
 @Component({
   selector: 'sprova-projects',

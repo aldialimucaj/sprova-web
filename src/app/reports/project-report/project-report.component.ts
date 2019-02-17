@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectReport } from 'app/_models';
-import { ReportsService, NavigatorService } from 'app/_services';
+import { ProjectReport } from '../../_models';
+import { ReportsService, NavigatorService } from '../../_services';
 import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
 

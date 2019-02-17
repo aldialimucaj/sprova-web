@@ -7,7 +7,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectService, CycleService, TestSetService, TestCaseService, NavigatorService, ExecutionService, AuthenticationService } from '../../_services/index';
 import { ClarityModule } from '@clr/angular';
-import { PackageFilterPipe } from "./package-filter.pipe";
+import { PackageFilterPipe } from './package-filter.pipe';
 
 
 describe('ProjectTestcasesComponent', () => {

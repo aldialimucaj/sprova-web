@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserDetailsComponent } from './user-details.component';
-import { UserService } from "../../_services";
+import { UserService } from '../../_services';
 import { Router } from '@angular/router';
 
 import { NO_ERRORS_SCHEMA } from '@angular/core';

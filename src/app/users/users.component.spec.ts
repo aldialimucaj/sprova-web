@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClarityModule } from '@clr/angular';
-import { UserService } from "../_services";
+import { UserService } from '../_services';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UsersComponent } from './users.component';
 import { By } from '@angular/platform-browser';
@@ -10,10 +10,10 @@ describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
   let userService: UserService;
-  const defaultData = [{ "id": "1", "username": "foo", "firstname": "foo", "lastname": "bar", "email": "foo@bar.net", "status": null, "admin": true }];
+  const defaultData = [{ 'id': '1', 'username': 'foo', 'firstname': 'foo', 'lastname': 'bar', 'email': 'foo@bar.net', 'status': null, 'admin': true }];
   const defaultData1 = [
-        { "id": "1", "username": "foo", "firstname": "foo", "lastname": "bar", "email": "foo@bar.net", "status": null, "admin": true },
-        { "id": "1", "username": "nameless", "firstname": "nameless", "lastname": "lastnameless", "email": "name@less.net", "status": null, "admin": true }
+        { 'id': '1', 'username': 'foo', 'firstname': 'foo', 'lastname': 'bar', 'email': 'foo@bar.net', 'status': null, 'admin': true },
+        { 'id': '1', 'username': 'nameless', 'firstname': 'nameless', 'lastname': 'lastnameless', 'email': 'name@less.net', 'status': null, 'admin': true }
       ];
 
   beforeEach(async(() => {

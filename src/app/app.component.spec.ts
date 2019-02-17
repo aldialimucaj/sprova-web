@@ -7,7 +7,7 @@ import { MomentModule } from 'ngx-moment';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { createTranslateLoader } from "./app.module";
+import { createTranslateLoader } from './app.module';
 import { FileDropModule } from 'ngx-file-drop';
 import {
     AuthenticationService,
@@ -16,11 +16,11 @@ import {
 } from './_services/index';
 import { AuthGuard } from './_guards/index';
 import { ClarityModule } from '@clr/angular';
-import { ROUTING } from "./app.routing";
-import { APP_BASE_HREF } from "@angular/common";
+import { ROUTING } from './app.routing';
+import { APP_BASE_HREF } from '@angular/common';
 
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
@@ -49,7 +49,7 @@ import { ProjectReportComponent } from './reports/project-report/project-report.
 import { CycleReportComponent } from './reports/cycle-report/cycle-report.component';
 import { TestsetReportComponent } from './reports/testset-report/testset-report.component';
 import { ExecutionSingleComponent } from './executions/execution-single/execution-single.component';
-import { TestSetExecutionsComponent } from "./testsets/testset-executions/testset-executions.component";
+import { TestSetExecutionsComponent } from './testsets/testset-executions/testset-executions.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 

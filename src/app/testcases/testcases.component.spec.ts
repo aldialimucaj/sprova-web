@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestCasesComponent } from './testcases.component';
 import { Router } from '@angular/router';
 import { By } from '@angular/platform-browser';
-import { TestCaseService, NavigatorService } from "../_services";
-import { MockQueryableService, MockNavigatorService } from "../_utils";
+import { TestCaseService, NavigatorService } from '../_services';
+import { MockQueryableService, MockNavigatorService } from '../_utils';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('TestCasesComponent', () => {
@@ -14,7 +14,7 @@ describe('TestCasesComponent', () => {
   let fixture: ComponentFixture<TestCasesComponent>;
   let testCaseService: TestCaseService;
   const defaultData = [];
-  const twoTestCasesData = [{_id:"1", title:"foo"},{_id:"2", title:"bar"}];
+  const twoTestCasesData = [{_id:'1', title:'foo'},{_id:'2', title:'bar'}];
 
   beforeEach(async(() => {
    TestBed.configureTestingModule({
