@@ -1,18 +1,18 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-import { ProjectService } from './project.service';
+import { TestCaseService } from './testcase.service';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('ProjectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProjectService],
+      providers: [TestCaseService],
       imports: [HttpClientModule, RouterTestingModule]
     });
   });
 
-  it('should be created', inject([ProjectService], (service: ProjectService) => {
+  it('should be created', () => {
+    const service: TestCaseService = TestBed.get(TestCaseService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

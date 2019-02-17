@@ -1,18 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-import { ProjectService } from './project.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CycleService } from './cycle.service';
 
 describe('ProjectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ProjectService],
+      providers: [CycleService],
       imports: [HttpClientModule, RouterTestingModule]
     });
   });
 
-  it('should be created', inject([ProjectService], (service: ProjectService) => {
+  it('should be created', inject([CycleService], (service: CycleService) => {
     expect(service).toBeTruthy();
   }));
 });

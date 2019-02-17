@@ -1,14 +1,14 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 import { ProjectService } from './project.service';
-import { HttpClientModule } from '@angular/common/http';
 
 describe('ProjectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [ProjectService],
-      imports: [HttpClientModule, RouterTestingModule]
+      imports: [HttpClientTestingModule, RouterTestingModule]
     });
   });
 
