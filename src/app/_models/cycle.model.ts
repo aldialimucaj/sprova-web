@@ -1,6 +1,3 @@
-import { TestCase } from 'app/_models';
-import { CycleService } from 'app/_services';
-
 export /**
  * Cycle
  */

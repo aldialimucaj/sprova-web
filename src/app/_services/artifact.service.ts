@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { saveAs } from 'file-saver';
 
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { QueryableImpl } from './queryable-implementation';
-import { API, COMPONENTS } from '../../environments/environment';
-import { Queryable, InsertResponse, RemoveResponse, Artifact, TestCase } from 'app/_models';
+import { API } from '../../environments/environment';
+import { InsertResponse, RemoveResponse, Artifact } from '../_models';
 
 @Injectable()
 export class ArtifactService extends QueryableImpl {
@@ -44,7 +43,7 @@ export class ArtifactService extends QueryableImpl {
   /* ************************************************************************* */
 
   downloadArtifact(id: string) {
-    super.getModelWithQuery(id, { download: true }, {responseType: 'blob', observe: 'response'}).subscribe(data => {
+    super.getModelWithQuery(id, { download: true }, { responseType: 'blob', observe: 'response' }).subscribe(data => {
       console.log(data);
       this.saveToFileSystem(data);
     });
@@ -55,7 +54,7 @@ export class ArtifactService extends QueryableImpl {
     const parts: string[] = contentDispositionHeader.split(';');
     const filename = parts[1].split('=')[1];
 
-    saveAs(response.body, filename.replace(/'/g,''));
+    saveAs(response.body, filename.replace(/'/g, ''));
   }
 
   /**

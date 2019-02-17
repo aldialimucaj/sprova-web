@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { QueryableImpl } from './queryable-implementation';
 import { API, COMPONENTS } from '../../environments/environment';
-import { Queryable, InsertResponse, RemoveResponse, TestSet } from 'app/_models';
+import { InsertResponse, RemoveResponse, TestSet } from '../_models';
 
 @Injectable()
 export class TestSetService extends QueryableImpl {
@@ -19,7 +19,7 @@ export class TestSetService extends QueryableImpl {
   }
 
   /* ************************************************************************* */
-  fetchOne(id: string) : Observable<TestSet> {
+  fetchOne(id: string): Observable<TestSet> {
     return super.getModel<TestSet>(id);
   }
 

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { QueryableImpl } from './queryable-implementation';
 import { API, COMPONENTS } from '../../environments/environment';
-import { Queryable, InsertResponse, RemoveResponse, Cycle, TestCase } from 'app/_models';
+import { InsertResponse, RemoveResponse, Cycle, TestCase } from '../_models';
 
 @Injectable()
 export class CycleService extends QueryableImpl {

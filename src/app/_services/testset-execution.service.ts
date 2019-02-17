@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { QueryableImpl } from './queryable-implementation';
-import { API, COMPONENTS, SUB_PATHS } from '../../environments/environment';
-import { Queryable, InsertResponse, RemoveResponse, TestSetExecution, Execution } from 'app/_models';
+import { API, SUB_PATHS } from '../../environments/environment';
+import { InsertResponse, RemoveResponse, TestSetExecution, Execution } from '../_models';
 
 @Injectable()
 export class TestSetExecutionService extends QueryableImpl {

@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Queryable } from 'app/_services';
+import { Queryable } from '../_services';
 
 export abstract class QueryableImpl implements Queryable {
 
@@ -38,8 +38,8 @@ export abstract class QueryableImpl implements Queryable {
     /* ************************************************************************* */
     public getModelWithQuery<T>(id: string, query: any, options?) {
         let params = this.getParams(query);
-        let requestOptions : object  = { params } ;
-        
+        let requestOptions: object = { params };
+
         if (options) {
             requestOptions['responseType'] = options.responseType;
             requestOptions['observe'] = options.observe;
@@ -61,8 +61,8 @@ export abstract class QueryableImpl implements Queryable {
 
     public getSubModelWithQuery<T>(id: string, subPath: string, query: any, options) {
         let params = this.getParams(query);
-        let requestOptions = { params, responseType: undefined, observe: undefined};
-        
+        let requestOptions = { params, responseType: undefined, observe: undefined };
+
         if (options) {
             requestOptions.responseType = options.responseType;
             requestOptions.observe = options.observe;

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { QueryableImpl } from './queryable-implementation';
-import { API, COMPONENTS } from '../../environments/environment';
-import { Queryable, InsertResponse, RemoveResponse, TestCase } from 'app/_models';
+import { API } from '../../environments/environment';
+import { InsertResponse, RemoveResponse, TestCase } from '../_models';
 
 @Injectable()
 export class TestCaseService extends QueryableImpl {

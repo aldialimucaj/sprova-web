@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
 import { CycleService, NavigatorService, ProjectService, TestSetService } from '../../_services';
-import { TestCaseService } from 'app/_services/testcase.service';
-import { TestCase, Project, CycleExtraField, TestSet } from 'app/_models';
+import { TestCaseService } from '../../_services/testcase.service';
+import { TestCase, Project, CycleExtraField, TestSet } from '../../_models';
 import { ViewType } from '../../testcases/testcases-grid/testcases-grid.component';
 
 @Component({

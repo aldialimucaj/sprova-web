@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { filter, cloneDeep, includes } from 'lodash';
 
-import { TestCase, TreeNode } from 'app/_models';
+import { TestCase, TreeNode } from '../_models';
 @Injectable({
   providedIn: 'root'
 })

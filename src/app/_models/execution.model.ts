@@ -1,4 +1,4 @@
-import { TestStep, User, ExecutionType } from 'app/_models';
+import { TestStep, User, ExecutionType } from '../_models';
 
 export /**
  * Execution
