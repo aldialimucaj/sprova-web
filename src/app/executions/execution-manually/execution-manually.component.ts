@@ -1,14 +1,10 @@
 import { Component, OnInit, HostListener, ChangeDetectorRef, AfterViewChecked, AfterViewInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
-import { mergeMap, pluck } from 'rxjs/operators';
-import { GenericForm } from '../../_utils';
-import { CycleService, TestSetExecutionService, NavigatorService, ExecutionService, TestSetService, ArtifactService } from '../../_services/index';
-import { Cycle, TestCase, Execution, ExecutionStatus, TestStepStatus, TestStep, ExecutionType } from '../../_models';
+import { ActivatedRoute } from '@angular/router';
+import { NavigatorService, ExecutionService, TestSetService, ArtifactService } from '../../_services/index';
+import { Execution, ExecutionStatus, TestStepStatus, TestStep, ExecutionType } from '../../_models';
 import { TestCaseService } from '../../_services/testcase.service';
 import { findIndex, find } from 'lodash';
-import { Chart } from 'chart.js';
-import { FileDropModule, UploadFile, UploadEvent } from 'ngx-file-drop';
+import { UploadFile, UploadEvent } from 'ngx-file-drop';
 import { environment } from '../../../environments/environment';
 
 @Component({

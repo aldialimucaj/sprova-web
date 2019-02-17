@@ -1,41 +1,39 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ExecutionService, NavigatorService, AuthenticationService, CycleService, TestCaseService } from '../../_services';
+import { ExecutionService, ArtifactService, NavigatorService, AuthenticationService, CycleService, TestCaseService } from '../../_services';
 
-import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ExecutionManuallyComponent } from './execution-manually.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockAuthenticationService, MockQueryableService } from '../../_utils';
 
 describe('ExecutionManuallyComponent', () => {
   let component: ExecutionManuallyComponent;
   let fixture: ComponentFixture<ExecutionManuallyComponent>;
 
   beforeEach(async(() => {
-   TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ExecutionManuallyComponent],
       providers: [
-        ExecutionService,
-        NavigatorService,
-        CycleService,
-        TestCaseService,
-        AuthenticationService
+        { provide: ExecutionService, useClass: MockQueryableService },
+        { provide: ArtifactService, useClass: MockQueryableService },
+        { provide: NavigatorService, useClass: MockQueryableService },
+        { provide: CycleService, useClass: MockQueryableService },
+        { provide: TestCaseService, useClass: MockQueryableService },
+        { provide: AuthenticationService, useClass: MockAuthenticationService }
       ],
       imports: [
-        HttpClientTestingModule,
         FormsModule,
         ReactiveFormsModule,
         RouterTestingModule,
         ClarityModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
