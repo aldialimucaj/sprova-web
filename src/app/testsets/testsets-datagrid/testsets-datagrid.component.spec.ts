@@ -5,8 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TestsetsDatagridComponent } from './testsets-datagrid.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ClarityModule } from '@clr/angular';
+import { MockQueryableService } from '../../_utils';
 
-import { GeneralMockService } from "../../_services/general-mock.service";
 
 describe('TestsetsDatagridComponent', () => {
   let component: TestsetsDatagridComponent;
@@ -17,7 +17,7 @@ describe('TestsetsDatagridComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       imports: [RouterTestingModule, HttpClientModule, ClarityModule],
       providers: [
-        { provide: TestSetService, useClass: GeneralMockService },
+        { provide: TestSetService, useClass: MockQueryableService },
         CycleService, TestSetExecutionService, TestSetService, ProjectService, NavigatorService, ExecutionService, AuthenticationService],
       declarations: [TestsetsDatagridComponent],
     })

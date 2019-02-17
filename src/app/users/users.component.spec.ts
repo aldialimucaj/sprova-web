@@ -1,14 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClarityModule } from '@clr/angular';
 import { UserService } from "../_services";
-import { Injectable } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
 import { UsersComponent } from './users.component';
-import { Queryable } from "app/_models";
-import { Observable } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { GeneralMockService } from "../_services/general-mock.service";
+import { MockQueryableService } from '../_utils';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -24,7 +20,7 @@ describe('UsersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UsersComponent],
       providers: [
-        { provide: UserService, useClass: GeneralMockService }
+        { provide: UserService, useClass: MockQueryableService }
       ],
       imports: [
         RouterTestingModule,

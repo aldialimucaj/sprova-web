@@ -18,7 +18,11 @@ export class MockQueryableService implements Queryable {
   }
 
   public listModelsByFilter<T>(values: any, limit: number, skip: number) {
-    return empty();
+    return this.listModels(limit, skip);
+  }
+  
+  public fetchAll(limit: number, skip: number) {
+    return this.listModels(limit, skip);
   }
 
   /* ************************************************************************* */
