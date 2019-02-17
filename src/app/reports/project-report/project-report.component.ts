@@ -31,16 +31,17 @@ export class ProjectReportComponent implements OnInit {
     this.route.params
       .subscribe(params => {
         this.projectId = params.projectId;
-
-        let dataSource = this.reportsService.fetchProjectReport(this.projectId);
-        dataSource.pipe(map(report => {
-          this.loading = false;
-          this.model = report;
-        }), delay(500)).subscribe(() => {
-          const ctx = document.getElementById("testcases-chart");
-          let data = this.reportsService.testCasesToChartData(this.model.testCases);
-          this.createTestCaseLineChart(ctx, data);
-        });
+        if (this.projectId) {
+          let dataSource = this.reportsService.fetchProjectReport(this.projectId);
+          dataSource.pipe(map(report => {
+            this.loading = false;
+            this.model = report;
+          }), delay(500)).subscribe(() => {
+            const ctx = document.getElementById("testcases-chart");
+            let data = this.reportsService.testCasesToChartData(this.model.testCases);
+            this.createTestCaseLineChart(ctx, data);
+          });
+        }
       });
   }
 
