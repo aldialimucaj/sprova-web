@@ -3,11 +3,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CycleDetailsComponent } from './cycle-details.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-import { CycleService, NavigatorService, AuthenticationService, TestCaseService } from '../../_services';
+import { CycleService, NavigatorService, AuthenticationService, TestCaseService, TestSetService, ProjectService } from '../../_services';
 import { TestcasesGridComponent } from '../../testcases/testcases-grid/testcases-grid.component';
 
 import { MomentModule } from 'ngx-moment';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 
 describe('CycleDetailsComponent', () => {
@@ -16,11 +16,14 @@ describe('CycleDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [NO_ERRORS_SCHEMA],
       declarations: [CycleDetailsComponent, TestcasesGridComponent],
       providers: [
         CycleService,
         NavigatorService,
         TestCaseService,
+        TestSetService,
+        ProjectService,
         AuthenticationService
       ],
       imports: [

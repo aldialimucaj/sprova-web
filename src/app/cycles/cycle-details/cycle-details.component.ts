@@ -39,23 +39,24 @@ export class CycleDetailsComponent implements OnInit {
         this.cycleId = params.cycleId;
         this.projectId = params.projectId;
         this.type = params.type;
-        this.cycleService.fetchOne(this.cycleId).pipe(mergeMap(data => {
-          this.model = data;
-          this.cycleService.getTestCasesWithStats(this.model._id, 0, 0).subscribe(testCaseData => {
-            this.testCases = testCaseData;
-            this.testCasesLoading = false;
+        if (this.cycleId) {
+          this.cycleService.fetchOne(this.cycleId).pipe(mergeMap(data => {
+            this.model = data;
+            this.cycleService.getTestCasesWithStats(this.model._id, 0, 0).subscribe(testCaseData => {
+              this.testCases = testCaseData;
+              this.testCasesLoading = false;
+            });
+            return this.testSetsService.listModelsByFilter<TestSet[]>({ cycleId: this.cycleId }, 0, 0);
+          }), mergeMap((data) => {
+            this.testSetModel = data;
+            return this.projectService.getModel(this.model.projectId);
+          }
+          )).subscribe((data: Project) => {
+            this.projectModel = data;
+            this.extraFields = this.projectModel.cycleFields;
+            this.loading = false;
           });
-          return this.testSetsService.listModelsByFilter<TestSet[]>({ cycleId: this.cycleId }, 0, 0);
-        }),mergeMap((data) => {
-          this.testSetModel = data;
-          return this.projectService.getModel(this.model.projectId);
         }
-
-        )).subscribe((data: Project) => {
-          this.projectModel = data;
-          this.extraFields = this.projectModel.cycleFields;
-          this.loading = false;
-        });
       });
   }
 
@@ -65,7 +66,7 @@ export class CycleDetailsComponent implements OnInit {
     this.cycleService.insertModel(clone).subscribe(
       data => {
         let newModelId = data['_id'];
-        for(let testSet of this.testSetModel) {
+        for (let testSet of this.testSetModel) {
           let cloneTestSet = Object.assign({}, testSet);
           cloneTestSet.cycleId = newModelId;
           this.testSetsService.insertModel(cloneTestSet).subscribe();
@@ -74,9 +75,9 @@ export class CycleDetailsComponent implements OnInit {
           this.model = data;
           this.navigatorService.openCycle(this.projectId, this.model._id);
         },
-        error => {
-          console.log(error);
-        })
+          error => {
+            console.log(error);
+          })
       },
       error => {
         console.log(error);
