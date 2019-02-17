@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { ProjectService } from "../_services";
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockQueryableService } from '../_utils';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -16,7 +17,7 @@ describe('ProjectsComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ProjectsComponent],
       providers: [
-        ProjectService
+        { provide: ProjectService, useClass: MockQueryableService }
       ],
       imports: [
         HttpClientModule,
