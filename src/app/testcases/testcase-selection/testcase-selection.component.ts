@@ -38,8 +38,7 @@ export class TestcaseSelectionComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     public testCaseService: TestCaseService,
     public treeUtilsService: TreeUtilsService,
-    private cycleService: CycleService) {
-  }
+    private cycleService: CycleService) { }
 
   ngOnInit() {
     this.route
