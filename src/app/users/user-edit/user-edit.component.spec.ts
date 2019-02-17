@@ -5,9 +5,9 @@ import { UserEditComponent } from './user-edit.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService} from '../../_services/index';
+import { UserService, NavigatorService, AuthenticationService} from '../../_services/index';
 import { ClarityModule } from '@clr/angular';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 describe('UserEditComponent', () => {
   let component: UserEditComponent;
@@ -16,8 +16,8 @@ describe('UserEditComponent', () => {
   beforeEach(async(() => {
    TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [RouterTestingModule, ClarityModule, HttpClientModule],
-      providers: [ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService],
+      imports: [RouterTestingModule, ClarityModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+      providers: [UserService, NavigatorService, AuthenticationService],
       declarations: [ UserEditComponent ]
     })
     .compileComponents();
