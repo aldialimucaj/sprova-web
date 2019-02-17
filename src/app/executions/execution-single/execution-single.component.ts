@@ -37,14 +37,18 @@ export class ExecutionSingleComponent implements OnInit {
         this.testCaseId = route.params.testCaseId;
         this.executionId = route.query.executionId;
 
-        this.getExecution(this.executionId).pipe(mergeMap(data => {
-          this.executionId = data._id;
-          this.model = data;
+        if (this.executionId) {
+          this.getExecution(this.executionId).pipe(mergeMap(data => {
+            this.executionId = data._id;
+            this.model = data;
+            this.loading = false;
+            return this.cycleService.fetchOne(this.cycleId);
+          })).subscribe(data => {
+            this.cycle = data;
+          });
+        } else {
           this.loading = false;
-          return this.cycleService.fetchOne(this.cycleId);
-        })).subscribe(data => {
-          this.cycle = data;
-        });
+        }
       });
   }
 
