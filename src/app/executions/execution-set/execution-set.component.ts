@@ -71,10 +71,14 @@ export class ExecutionSetComponent implements OnInit {
   }
 
   goToNextTest() {
-    this.executionSetService.fetchNextPending(this.testSetExecutionId).subscribe(data => {
-      this.model = data;
-      this.checkNextTest();
-    });
+    if (this.testSetExecutionId) {
+      this.executionSetService.fetchNextPending(this.testSetExecutionId).subscribe(data => {
+        this.model = data;
+        this.checkNextTest();
+      });
+    } else {
+      throw new Error('Cannot get next test without knowin testSetExecutionId');
+    }
   }
 
   checkNextTest() {
