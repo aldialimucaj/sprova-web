@@ -14,10 +14,7 @@ export class TestcaseStepsComponent implements OnInit {
   @Input() testCaseId;
   constructor(
     private route: ActivatedRoute,
-    public testCaseService: TestCaseService) {
-
-
-  }
+    public testCaseService: TestCaseService) { }
 
   ngOnInit() {
     if (!this.steps && this.testCaseId) {
