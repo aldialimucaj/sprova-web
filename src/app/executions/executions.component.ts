@@ -16,20 +16,22 @@ export class ExecutionsComponent implements OnInit {
   skip = 1;
 
   constructor(
-    private route: ActivatedRoute, public executionService: ExecutionService) { }
+    private route: ActivatedRoute, 
+    public executionService: ExecutionService) { }
 
   ngOnInit() {
     this.route
       .params
       .subscribe(params => {
         this.projectId = params.projectId;
-
-        this.executionService.listModelsByFilter<Execution[]>(
-          { projectId: this.projectId },
-          this.limit, this.limit * this.skip).subscribe(data => {
-            this.model = data;
-            this.loading = false;
-          });
+        if (this.projectId) {
+          this.executionService.listModelsByFilter<Execution[]>(
+            { projectId: this.projectId },
+            this.limit, this.limit * this.skip).subscribe(data => {
+              this.model = data;
+              this.loading = false;
+            });
+        }
       });
   }
 
