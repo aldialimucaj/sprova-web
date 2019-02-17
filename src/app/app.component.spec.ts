@@ -20,7 +20,6 @@ import { ROUTING } from './app.routing';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { UserDetailsComponent } from './users/user-details/user-details.component';
@@ -62,7 +61,6 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                AboutComponent,
                 HomeComponent,
                 LoginComponent,
                 UsersComponent,

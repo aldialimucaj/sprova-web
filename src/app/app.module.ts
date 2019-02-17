@@ -16,7 +16,6 @@ import { FileDropModule } from 'ngx-file-drop';
 import { AppComponent } from './app.component';
 import { ROUTING } from './app.routing';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/index';
@@ -75,7 +74,6 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
     declarations: [
         AppComponent,
-        AboutComponent,
         HomeComponent,
         LoginComponent,
         UsersComponent,
