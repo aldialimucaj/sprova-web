@@ -4,7 +4,7 @@ import { TestCaseEditComponent } from './testcase-edit.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { TestCaseService, NavigatorService, AuthenticationService } from "../../_services";
+import { TestCaseService, ProjectService, ArtifactService, NavigatorService, AuthenticationService } from "../../_services";
 
 import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +20,8 @@ describe('TestCaseEditComponent', () => {
       declarations: [TestCaseEditComponent],
       providers: [
         TestCaseService,
+        ProjectService,
+        ArtifactService,
         NavigatorService,
         AuthenticationService
       ],
