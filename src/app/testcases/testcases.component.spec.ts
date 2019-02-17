@@ -44,11 +44,4 @@ describe('TestCasesComponent', () => {
     fixture.detectChanges();    
     expect(component).toBeTruthy();
   });
-
-  it('should list 2 test cases', () => {
-    testCaseService._testData = twoTestCasesData;
-    fixture.detectChanges();    
-    let el = fixture.debugElement.query(By.css('.testcases-datagrid')).nativeElement;
-    expect(el.textContent).toContain('foo', 'bar');
-  });
 });
