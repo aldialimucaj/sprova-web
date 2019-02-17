@@ -5,9 +5,9 @@ import { TestSetsEditComponent } from './testsets-edit.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService} from '../../_services/index';
+import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, TestCaseService, AuthenticationService} from '../../_services/index';
 import { ClarityModule } from '@clr/angular';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 describe('TestSetsEditComponent', () => {
@@ -17,8 +17,8 @@ describe('TestSetsEditComponent', () => {
   beforeEach(async(() => {
    TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [RouterTestingModule, ClarityModule, HttpClientModule],
-      providers: [ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService],
+      imports: [RouterTestingModule, ClarityModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+      providers: [ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, TestCaseService, AuthenticationService],
       declarations: [ TestSetsEditComponent ]
     })
     .compileComponents();
