@@ -6,17 +6,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { CycleService } from '../_services';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockQueryableService } from '../_utils';
 
 describe('CyclesComponent', () => {
   let component: CyclesComponent;
   let fixture: ComponentFixture<CyclesComponent>;
 
   beforeEach(async(() => {
-   TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [CyclesComponent],
       providers: [
-        CycleService
+        { provide: CycleService, useClass: MockQueryableService }
       ],
       imports: [
         HttpClientModule,
