@@ -11,12 +11,14 @@ import { Execution } from 'app/_models';
   styleUrls: ['./execution-edit.component.scss']
 })
 export class ExecutionEditComponent extends GenericForm implements OnInit {
-  projectId: any;
+  public executionId: any;
+  public projectId: any;
   public model: any;
   public form: FormGroup;
 
   editMode = false;
   submitted = false;
+  loading = true;
 
   constructor(
     private executionService: ExecutionService,
@@ -32,16 +34,17 @@ export class ExecutionEditComponent extends GenericForm implements OnInit {
       .params
       .subscribe(params => {
         this.projectId = params.projectId;
+        this.executionId = params.executionId;
         this.editMode = true;
-        this.executionService.fetchOne(params.executionId).subscribe(
-          result => {
+        if (this.executionId) {
+          this.executionService.fetchOne(this.executionId).subscribe(result => {
             this.model = result;
             this.form = this.getFormGroup(this.model);
-          },
-          error => {
-            console.error(error);
-          }
-        );
+            this.loading = false;
+          });
+        } else {
+          this.loading = false;
+        }
       });
   }
   onSubmit() {

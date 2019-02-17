@@ -3,10 +3,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExecutionEditComponent } from './execution-edit.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
 import { ExecutionService, NavigatorService, AuthenticationService } from '../../_services';
 
-import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 

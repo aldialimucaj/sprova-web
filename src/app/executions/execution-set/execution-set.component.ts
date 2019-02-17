@@ -76,9 +76,7 @@ export class ExecutionSetComponent implements OnInit {
         this.model = data;
         this.checkNextTest();
       });
-    } else {
-      throw new Error('Cannot get next test without knowin testSetExecutionId');
-    }
+    } //TODO take care of else
   }
 
   checkNextTest() {
