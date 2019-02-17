@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CycleService } from "../_services";
+import { CycleService } from '../_services';
 import { Cycle } from 'app/_models';
 
 @Component({

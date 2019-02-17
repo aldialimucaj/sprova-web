@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, empty } from 'rxjs';
 
-import { Queryable } from "../../_models";
+import { Queryable } from '../../_models';
 
 @Injectable()
 export class MockQueryableService implements Queryable {

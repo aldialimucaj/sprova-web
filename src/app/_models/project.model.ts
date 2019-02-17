@@ -38,8 +38,8 @@ export class TestCaseExtraField {
 }
 
 export enum ExtraFieldType {
-    String = "String",
-    Number = "Number",
-    Select = "Select",
-    Date = "Date"
+    String = 'String',
+    Number = 'Number',
+    Select = 'Select',
+    Date = 'Date'
 }

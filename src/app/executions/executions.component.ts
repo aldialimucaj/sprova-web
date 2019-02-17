@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ExecutionService } from "../_services";
+import { ExecutionService } from '../_services';
 import { Execution } from 'app/_models';
 import { ActivatedRoute } from '@angular/router';
 

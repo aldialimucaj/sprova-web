@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { Queryable, User, InsertResponse, RemoveResponse } from "../_models";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Queryable, User, InsertResponse, RemoveResponse } from '../_models';
 import { API } from '../../environments/environment';
 import { QueryableImpl } from '../_services/queryable-implementation';
 

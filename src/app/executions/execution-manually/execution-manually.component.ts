@@ -1,8 +1,8 @@
 import { Component, OnInit, HostListener, ChangeDetectorRef, AfterViewChecked, AfterViewInit, Input } from '@angular/core';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { mergeMap, pluck } from 'rxjs/operators';
-import { GenericForm } from "../../_utils";
+import { GenericForm } from '../../_utils';
 import { CycleService, TestSetExecutionService, NavigatorService, ExecutionService, TestSetService, ArtifactService } from '../../_services/index';
 import { Cycle, TestCase, Execution, ExecutionStatus, TestStepStatus, TestStep, ExecutionType } from '../../_models';
 import { TestCaseService } from '../../_services/testcase.service';

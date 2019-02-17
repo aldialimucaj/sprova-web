@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectService, CycleService, NavigatorService, TestCaseService } from "../../_services";
+import { ProjectService, CycleService, NavigatorService, TestCaseService } from '../../_services';
 
 @Component({
   selector: 'sprova-project-details',
@@ -48,7 +48,7 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   delete(id) {
-    if (confirm("Are you sure you want to delete " + this.model.name)) {
+    if (confirm('Are you sure you want to delete ' + this.model.name)) {
       this.projectService.remove(id).subscribe(
         data => {
           this.model = data;

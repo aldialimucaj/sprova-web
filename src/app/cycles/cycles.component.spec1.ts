@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { CyclesComponent } from './cycles.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { CycleService } from "../_services";
+import { CycleService } from '../_services';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('CyclesComponent', () => {

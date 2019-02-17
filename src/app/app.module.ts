@@ -1,11 +1,11 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClarityModule } from '@clr/angular';
 
-import { GraphQLModuleModule } from "./graphql.module";
+import { GraphQLModuleModule } from './graphql.module';
 
 import { MomentModule } from 'ngx-moment';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -14,9 +14,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FileDropModule } from 'ngx-file-drop';
 
 import { AppComponent } from './app.component';
-import { ROUTING } from "./app.routing";
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
+import { ROUTING } from './app.routing';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
 
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/index';
@@ -55,7 +55,7 @@ import { PackageFilterPipe } from './projects/project-testcases/package-filter.p
 import { TestSetsComponent } from './testsets/testsets.component';
 import { TestSetsEditComponent } from './testsets/testsets-edit/testsets-edit.component';
 import { TestSetsDetailsComponent } from './testsets/testsets-details/testsets-details.component';
-import { TestSetExecutionsComponent } from "./testsets/testset-executions/testset-executions.component";
+import { TestSetExecutionsComponent } from './testsets/testset-executions/testset-executions.component';
 import { ExecutionSetComponent } from './executions/execution-set/execution-set.component';
 import { TestcaseSelectionComponent } from './testcases/testcase-selection/testcase-selection.component';
 import { TestcaseTreeviewComponent } from './testcases/testcase-treeview/testcase-treeview.component';

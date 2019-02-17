@@ -4,7 +4,7 @@ import { Execution, TestCase, Project, ExecutionType, ExecutionStatus } from '..
 import { ViewType } from '../../testcases/testcases-grid/testcases-grid.component';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { find } from "lodash";
+import { find } from 'lodash';
 
 @Component({
   selector: 'sprova-testset-executions',
@@ -65,7 +65,7 @@ export class TestSetExecutionsComponent implements OnInit {
   }
 
   delete(id) {
-    if (confirm("Are you sure you want to delete execution set for " + this.model.title)) {
+    if (confirm('Are you sure you want to delete execution set for ' + this.model.title)) {
       this.testSetExecutionService.remove(id).subscribe(
         data => {
           this.navigatorService.openTestSet(this.projectId, this.cycleId, this.testSetId);

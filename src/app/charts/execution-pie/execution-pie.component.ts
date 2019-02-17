@@ -45,16 +45,16 @@ export class ExecutionPieComponent implements OnInit, AfterViewInit {
 
       let dataSets = data
         .map(f => {
-          let result = { "SUCCESSFUL": 0, "PENDING": 0, "FAILED": 0 }
+          let result = { 'SUCCESSFUL': 0, 'PENDING': 0, 'FAILED': 0 }
           result[f.status] = 1;
 
           return result
         })
         .reduce((r, l) => {
           let result = {
-            "SUCCESSFUL": r.SUCCESSFUL + l.SUCCESSFUL,
-            "PENDING": r.PENDING + l.PENDING,
-            "FAILED": r.FAILED + l.FAILED
+            'SUCCESSFUL': r.SUCCESSFUL + l.SUCCESSFUL,
+            'PENDING': r.PENDING + l.PENDING,
+            'FAILED': r.FAILED + l.FAILED
           };
           return result;
         });
@@ -62,7 +62,7 @@ export class ExecutionPieComponent implements OnInit, AfterViewInit {
       this.chart = new Chart(ctx, {
         type: 'pie',
         data: {
-          labels: ["Success", "Pending", "Failed"],
+          labels: ['Success', 'Pending', 'Failed'],
           datasets: [{
             label: 'share of execution results',
             data: [dataSets.SUCCESSFUL, dataSets.PENDING, dataSets.FAILED],

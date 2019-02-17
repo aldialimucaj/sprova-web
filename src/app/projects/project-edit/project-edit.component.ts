@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { camelCase } from 'lodash';
-import { GenericForm } from "../../_utils";
+import { GenericForm } from '../../_utils';
 import { ProjectService, NavigatorService } from '../../_services/index';
 import { Project, CycleExtraField, TestCaseExtraField} from '../../_models';
 

@@ -3,8 +3,8 @@ import { TestCase, Cycle, TreeNode } from '../../_models';
 import { TestCaseService, TreeUtilsService, CycleService } from '../../_services';
 import { ActivatedRoute } from '@angular/router';
 import { findIndex, filter, without } from 'lodash';
-import { ClrDatagridComparatorInterface, ClrDatagrid } from "@clr/angular";
-import { TestCaseFilter } from "./testcase.filter";
+import { ClrDatagridComparatorInterface, ClrDatagrid } from '@clr/angular';
+import { TestCaseFilter } from './testcase.filter';
 import { SelectionType } from '@clr/angular/data/datagrid/providers/selection';
 
 

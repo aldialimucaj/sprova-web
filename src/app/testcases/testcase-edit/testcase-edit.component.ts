@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { GenericForm } from "../../_utils";
+import { GenericForm } from '../../_utils';
 import { TestCaseService, ArtifactService, NavigatorService, ProjectService } from '../../_services/index';
 import { TestCase, Project, TestStep, TestCaseExtraField, ExecutionType, ArtifactType } from '../../_models';
-import { findIndex } from "lodash";
+import { findIndex } from 'lodash';
 
 @Component({
   selector: 'sprova-testcase-edit',

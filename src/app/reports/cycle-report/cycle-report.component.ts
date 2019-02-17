@@ -7,7 +7,7 @@ import { map, delay } from 'rxjs/operators';
 import { Observable, Scheduler } from 'rxjs';
 import { CycleReport, Execution, TestCase, ExecutionStatus, User } from '../../_models';
 import { exec } from 'child_process';
-import { find } from "lodash";
+import { find } from 'lodash';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class CycleReportComponent implements OnInit {
             this.model = report;
             this.testCasesStatus = this.matchExecutions(this.model.testCases, this.model.executions);
           }), delay(500)).subscribe(() => {
-            const ctx = document.getElementById("testcases-chart");
+            const ctx = document.getElementById('testcases-chart');
             let data = this.reportsService.testCasesToChartData(this.model.testCases);
             // this.createTestCaseLineChart(ctx, data);
           });

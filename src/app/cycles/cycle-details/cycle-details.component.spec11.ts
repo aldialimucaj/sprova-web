@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { CycleDetailsComponent } from './cycle-details.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { CycleService, NavigatorService, AuthenticationService, TestCaseService } from "../../_services";
-import { TestcasesGridComponent } from "../../testcases/testcases-grid/testcases-grid.component";
+import { CycleService, NavigatorService, AuthenticationService, TestCaseService } from '../../_services';
+import { TestcasesGridComponent } from '../../testcases/testcases-grid/testcases-grid.component';
 
 import { MomentModule } from 'ngx-moment';
 

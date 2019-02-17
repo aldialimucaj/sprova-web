@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExecutionService, NavigatorService, ArtifactService } from "../../_services";
+import { ExecutionService, NavigatorService, ArtifactService } from '../../_services';
 
 import { environment } from '../../../environments/environment';
 import { flatMap } from 'rxjs/operators';
@@ -49,7 +49,7 @@ export class ExecutionDetailsComponent implements OnInit {
   }
 
   reRun(id) {
-    if (confirm("Are you sure you want to re-run this execution. Current status will be lost!")) {
+    if (confirm('Are you sure you want to re-run this execution. Current status will be lost!')) {
       this.executionService.reExecute(id).subscribe(
         data => {
           this.navigatorService.reexecutionTestCase(this.projectId, this.model.cycleId, this.model.testCaseId, this.id);
@@ -62,7 +62,7 @@ export class ExecutionDetailsComponent implements OnInit {
   }
 
   delete(id) {
-    if (confirm("Are you sure you want to delete " + this.model.name)) {
+    if (confirm('Are you sure you want to delete ' + this.model.name)) {
       this.executionService.remove(id).subscribe(
         data => {
           this.model = data;

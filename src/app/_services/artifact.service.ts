@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { saveAs } from 'file-saver';
 
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { QueryableImpl } from "./queryable-implementation";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { QueryableImpl } from './queryable-implementation';
 import { API, COMPONENTS } from '../../environments/environment';
 import { Queryable, InsertResponse, RemoveResponse, Artifact, TestCase } from 'app/_models';
 
@@ -55,7 +55,7 @@ export class ArtifactService extends QueryableImpl {
     const parts: string[] = contentDispositionHeader.split(';');
     const filename = parts[1].split('=')[1];
 
-    saveAs(response.body, filename.replace(/"/g,''));
+    saveAs(response.body, filename.replace(/'/g,''));
   }
 
   /**

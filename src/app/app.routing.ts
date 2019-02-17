@@ -12,22 +12,22 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/index';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent, UserEditComponent, UserDetailsComponent } from './users';
-import { SettingsComponent } from "./settings/settings.component";
+import { SettingsComponent } from './settings/settings.component';
 import {
     ProjectsComponent,
     ProjectEditComponent,
     ProjectDetailsComponent,
     ProjectTestcasesComponent,
     ProjectCyclesComponent
-} from "./projects";
+} from './projects';
 
-import { CyclesComponent, CycleEditComponent, CycleDetailsComponent } from "./cycles";
+import { CyclesComponent, CycleEditComponent, CycleDetailsComponent } from './cycles';
 import { TestCasesComponent, TestCaseDetailsComponent, TestCaseEditComponent } from './testcases';
 import { ExecutionsComponent, ExecutionDetailsComponent, ExecutionEditComponent, ExecutionManuallyComponent } from './executions';
 import { TestSetsComponent, TestSetsEditComponent, TestSetsDetailsComponent } from './testsets';
 import { ExecutionSetComponent } from './executions/execution-set/execution-set.component';
 
-import { ProjectReportComponent, CycleReportComponent, TestsetReportComponent } from "./reports";
+import { ProjectReportComponent, CycleReportComponent, TestsetReportComponent } from './reports';
 import { ExecutionSingleComponent } from './executions/execution-single/execution-single.component';
 import { TestSetExecutionsComponent } from './testsets/testset-executions/testset-executions.component';
 

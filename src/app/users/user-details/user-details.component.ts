@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from "../../_services";
+import { UserService } from '../../_services';
 
 @Component({
   selector: 'sprova-user-details',

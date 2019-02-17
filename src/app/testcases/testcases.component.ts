@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TestCaseService, NavigatorService } from "../_services";
+import { TestCaseService, NavigatorService } from '../_services';
 import { TestCase } from '../_models';
 import { ActivatedRoute } from '@angular/router';
 

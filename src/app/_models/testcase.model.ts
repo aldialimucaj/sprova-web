@@ -41,15 +41,15 @@ export /**
 
 export
     enum TestStepStatus {
-    Failed = "FAILED",
-    Successful = "SUCCESSFUL",
-    Pending = "PENDING"
+    Failed = 'FAILED',
+    Successful = 'SUCCESSFUL',
+    Pending = 'PENDING'
 }
 
 
 export enum ExecutionType {
-    Automated = "AUTOMATED",
-    Manual = "MANUAL",
-    ManualAutomated = "MANUAL_AUTOMATED"
+    Automated = 'AUTOMATED',
+    Manual = 'MANUAL',
+    ManualAutomated = 'MANUAL_AUTOMATED'
 }
 

@@ -1,5 +1,5 @@
-import { User } from "./user.model";
-import { ExecutionType } from "./testcase.model";
+import { User } from './user.model';
+import { ExecutionType } from './testcase.model';
 
 export /**
  * TestSet

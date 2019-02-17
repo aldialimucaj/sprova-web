@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { CycleService, NavigatorService, ProjectService, TestSetService } from "../../_services";
+import { CycleService, NavigatorService, ProjectService, TestSetService } from '../../_services';
 import { TestCaseService } from 'app/_services/testcase.service';
 import { TestCase, Project, CycleExtraField, TestSet } from 'app/_models';
-import { ViewType } from "../../testcases/testcases-grid/testcases-grid.component";
+import { ViewType } from '../../testcases/testcases-grid/testcases-grid.component';
 
 @Component({
   selector: 'sprova-cycle-details',
@@ -64,7 +64,7 @@ export class CycleDetailsComponent implements OnInit {
     clone.title = `${clone.title}.CLONE`
     this.cycleService.insertModel(clone).subscribe(
       data => {
-        let newModelId = data["_id"];
+        let newModelId = data['_id'];
         for(let testSet of this.testSetModel) {
           let cloneTestSet = Object.assign({}, testSet);
           cloneTestSet.cycleId = newModelId;
@@ -84,7 +84,7 @@ export class CycleDetailsComponent implements OnInit {
   }
 
   delete(id) {
-    if (confirm("Are you sure you want to delete " + this.model.title)) {
+    if (confirm('Are you sure you want to delete ' + this.model.title)) {
       this.cycleService.remove(id).subscribe(
         data => {
           this.model = data;

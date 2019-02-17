@@ -1,6 +1,6 @@
-import { ClrDatagridFilterInterface } from "@clr/angular";
+import { ClrDatagridFilterInterface } from '@clr/angular';
 import { Subject } from 'rxjs';
-import { TreeNode, TestCase } from "../../_models";
+import { TreeNode, TestCase } from '../../_models';
 
 export class TestCaseFilter implements ClrDatagridFilterInterface<TestCase> {
 

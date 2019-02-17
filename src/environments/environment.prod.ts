@@ -1,62 +1,62 @@
 export const LABELS = {
-  APP_NAME: "sprova"
+  APP_NAME: 'sprova'
 }
 
 export const environment = {
   production: false,
-  API_URL: location.protocol + '//' + location.hostname + ":8181",
-  JWT_TOKEN_NAME: "id_token",
-  JWT_JSON_TOKEN_NAME: "id_json_token",
-  GRAPHQL_PATH: "/graphql"
+  API_URL: location.protocol + '//' + location.hostname + ':8181',
+  JWT_TOKEN_NAME: 'id_token',
+  JWT_JSON_TOKEN_NAME: 'id_json_token',
+  GRAPHQL_PATH: '/graphql'
 };
 
 
 export const API_VERSIONS = {
-  NONE: "",
-  V1: "/api/v1"
+  NONE: '',
+  V1: '/api/v1'
 }
 
-export const API_PATH = "/api" + API_VERSIONS.NONE;
+export const API_PATH = '/api' + API_VERSIONS.NONE;
 
 export const COMPONENTS = {
-  USERS: "users",
-  TESTCASES: "testcases",
-  PROJECTS: "projects",
-  CYCLES: "cycles",
-  ARTIFACTS: "artifacts",
-  TEST_SETS: "testsets",
-  TEST_SET_EXECUTIONS: "testset-executions",
-  EXECUTION_SETS: "executionsets",
-  SUITES: "suites",
-  SEARCH: "search",
-  EXECUTIONS: "executions",
-  REPORTS: "reports",
-  STEPS: "steps",
-  PARENTS: "parents",
-  TESTCASESSTATS: "testcasesstats",
-  CHILDREN: "children",
-  FIND: "find",
+  USERS: 'users',
+  TESTCASES: 'testcases',
+  PROJECTS: 'projects',
+  CYCLES: 'cycles',
+  ARTIFACTS: 'artifacts',
+  TEST_SETS: 'testsets',
+  TEST_SET_EXECUTIONS: 'testset-executions',
+  EXECUTION_SETS: 'executionsets',
+  SUITES: 'suites',
+  SEARCH: 'search',
+  EXECUTIONS: 'executions',
+  REPORTS: 'reports',
+  STEPS: 'steps',
+  PARENTS: 'parents',
+  TESTCASESSTATS: 'testcasesstats',
+  CHILDREN: 'children',
+  FIND: 'find',
 }
 
 export const PATHS = {
-  ARTIFACTS: "/" + COMPONENTS.ARTIFACTS,
-  USERS: "/" + COMPONENTS.USERS,
-  TESTCASES: "/" + COMPONENTS.TESTCASES,
-  PROJECTS: "/" + COMPONENTS.PROJECTS,
-  CYCLES: "/" + COMPONENTS.CYCLES,
-  TEST_SETS: "/" + COMPONENTS.TEST_SETS,
-  TEST_SET_EXECUTIONS: "/" + COMPONENTS.TEST_SET_EXECUTIONS,
-  SUITES: "/" + COMPONENTS.SUITES,
-  SEARCH: "/" + COMPONENTS.SEARCH,
-  EXECUTIONS: "/" + COMPONENTS.EXECUTIONS,
-  REPORTS: "/" + COMPONENTS.REPORTS,
+  ARTIFACTS: '/' + COMPONENTS.ARTIFACTS,
+  USERS: '/' + COMPONENTS.USERS,
+  TESTCASES: '/' + COMPONENTS.TESTCASES,
+  PROJECTS: '/' + COMPONENTS.PROJECTS,
+  CYCLES: '/' + COMPONENTS.CYCLES,
+  TEST_SETS: '/' + COMPONENTS.TEST_SETS,
+  TEST_SET_EXECUTIONS: '/' + COMPONENTS.TEST_SET_EXECUTIONS,
+  SUITES: '/' + COMPONENTS.SUITES,
+  SEARCH: '/' + COMPONENTS.SEARCH,
+  EXECUTIONS: '/' + COMPONENTS.EXECUTIONS,
+  REPORTS: '/' + COMPONENTS.REPORTS,
 }
 
 export const SUB_PATHS = {
-  RUN_FOR: "runFor",
-  EXECUTE: "execute",
-  NEXT_PENDING: "next-pending",
-  HAS_PENDING: "has-pending"
+  RUN_FOR: 'runFor',
+  EXECUTE: 'execute',
+  NEXT_PENDING: 'next-pending',
+  HAS_PENDING: 'has-pending'
 }
 
 export const API = {

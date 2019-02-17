@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { ProjectReport, CycleReport } from "../_models";
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { ProjectReport, CycleReport } from '../_models';
 import { API, COMPONENTS } from '../../environments/environment';
-import { sortBy } from "lodash";
+import { sortBy } from 'lodash';
 
 @Injectable({
   providedIn: 'root'

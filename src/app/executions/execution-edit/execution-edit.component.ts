@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { GenericForm } from "../../_utils";
+import { GenericForm } from '../../_utils';
 import { ExecutionService, NavigatorService } from '../../_services/index';
 import { Execution } from 'app/_models';
 

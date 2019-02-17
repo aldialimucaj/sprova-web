@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../_services/index';
 import { User } from '../_models';
-import { LABELS } from "../../environments/environment";
+import { LABELS } from '../../environments/environment';
 
 
 @Component({

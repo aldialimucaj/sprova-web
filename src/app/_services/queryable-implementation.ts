@@ -1,6 +1,6 @@
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { Queryable } from "app/_services";
+import { Queryable } from 'app/_services';
 
 export abstract class QueryableImpl implements Queryable {
 

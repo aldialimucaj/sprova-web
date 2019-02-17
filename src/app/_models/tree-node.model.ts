@@ -1,4 +1,4 @@
-import { TestCase } from "./testcase.model";
+import { TestCase } from './testcase.model';
 
 export /**
  * TreeNode

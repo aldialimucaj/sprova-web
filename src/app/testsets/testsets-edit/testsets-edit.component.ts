@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { GenericForm } from "../../_utils";
+import { GenericForm } from '../../_utils';
 import { TestSetService, CycleService, NavigatorService, ProjectService, TreeUtilsService } from '../../_services/index';
 import { Cycle, TestCase, Project, CycleExtraField, CycleStatus, TestSet, TestSetExtraField } from 'app/_models';
 import { TestCaseService } from '../../_services/testcase.service';

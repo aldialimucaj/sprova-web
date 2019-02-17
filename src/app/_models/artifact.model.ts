@@ -1,5 +1,5 @@
-import { TestCase } from "app/_models";
-import { ArtifactService } from "app/_services";
+import { TestCase } from 'app/_models';
+import { ArtifactService } from 'app/_services';
 
 export /**
  * Artifact

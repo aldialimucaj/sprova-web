@@ -37,7 +37,7 @@ export class ProjectReportComponent implements OnInit {
             this.loading = false;
             this.model = report;
           }), delay(500)).subscribe(() => {
-            const ctx = document.getElementById("testcases-chart");
+            const ctx = document.getElementById('testcases-chart');
             let data = this.reportsService.testCasesToChartData(this.model.testCases);
             this.createTestCaseLineChart(ctx, data);
           });

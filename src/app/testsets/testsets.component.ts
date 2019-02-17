@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { ProjectService, CycleService, NavigatorService, TestSetService, TestSetExecutionService } from "../_services";
+import { ProjectService, CycleService, NavigatorService, TestSetService, TestSetExecutionService } from '../_services';
 import { TestSet, TestSetExecution } from '../_models';
 
 @Component({

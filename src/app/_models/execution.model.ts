@@ -1,4 +1,4 @@
-import { TestStep, User, ExecutionType } from "app/_models";
+import { TestStep, User, ExecutionType } from 'app/_models';
 
 export /**
  * Execution
@@ -43,8 +43,8 @@ export /**
 }
 
 export enum ExecutionStatus {
-    Failed = "FAILED",
-    Successful = "SUCCESSFUL",
-    Pending = "PENDING",
-    Working = "WORKING"
+    Failed = 'FAILED',
+    Successful = 'SUCCESSFUL',
+    Pending = 'PENDING',
+    Working = 'WORKING'
 }

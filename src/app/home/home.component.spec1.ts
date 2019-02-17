@@ -3,12 +3,12 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { async, TestBed, ComponentFixture } from "@angular/core/testing";
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ClarityModule } from '@clr/angular';
 import { HomeComponent } from './home.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { createTranslateLoader } from "../app.module";
+import { createTranslateLoader } from '../app.module';
 
 
 describe('HomeComponent', () => {
@@ -50,8 +50,8 @@ describe('HomeComponent', () => {
         expect(compiled).toBeTruthy();
     }));
 
-    /*it(`should display: "${expectedMsg}"`, async(() => {
-        expect(compiled.querySelector("p").textContent).toMatch(expectedMsg);
+    /*it(`should display: '${expectedMsg}'`, async(() => {
+        expect(compiled.querySelector('p').textContent).toMatch(expectedMsg);
     }));*/
 
 

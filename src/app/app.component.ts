@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from './_models';
 import { environment } from '../environments/environment';
-import { AuthenticationService } from "./_services";
+import { AuthenticationService } from './_services';
 
 @Component({
     selector: 'sprova',

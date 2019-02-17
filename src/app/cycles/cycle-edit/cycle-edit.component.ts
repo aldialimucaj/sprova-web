@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from "@angular/forms";
+import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs/operators';
-import { GenericForm } from "../../_utils";
+import { GenericForm } from '../../_utils';
 import { CycleService, NavigatorService, ProjectService } from '../../_services/index';
 import { Cycle, TestCase, Project, CycleExtraField, CycleStatus } from 'app/_models';
 import { TestCaseService } from 'app/_services/testcase.service';
-import { remove } from "lodash";
+import { remove } from 'lodash';
 import { SelectionViewType } from 'app/testcases/testcase-selection/testcase-selection.component';
 
 @Component({
