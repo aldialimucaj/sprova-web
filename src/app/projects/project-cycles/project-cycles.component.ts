@@ -22,10 +22,12 @@ export class ProjectCyclesComponent implements OnInit {
       .params
       .subscribe(params => {
         this.projectId = params.projectId;
-        this.cycleService.listModelsByFilter({ projectId: this.projectId }, 0, 0).subscribe(data => {
-          this.cycleModel = data;
-          this.loading = false;
-        });
+        if (this.projectId) {
+          this.cycleService.listModelsByFilter({ projectId: this.projectId }, 0, 0).subscribe(data => {
+            this.cycleModel = data;
+            this.loading = false;
+          });
+        }
 
       });
   }
