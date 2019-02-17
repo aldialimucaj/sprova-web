@@ -24,13 +24,12 @@ export class TestsetsDatagridComponent implements OnInit {
     public testSetExecutionService: TestSetExecutionService) { }
 
   ngOnInit() {
-
-    if (!this.model) {
+    if (!this.model && this.cycleId) {
       this.testSets = this.testSetsService.listModelsByFilter<TestSet[]>({ cycleId: this.cycleId }, 0, 0);
     } else {
       this.testSets = this.model;
     }
-
+    this.loading = false;
   }
 
 
