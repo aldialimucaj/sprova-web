@@ -9,14 +9,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 import { Observable } from "rxjs";
 import { HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from '@clr/angular';
-
-@Injectable()
-export class MockAuthenticationService extends AuthenticationService {
-  login(username: string, password: string) {
-    return new Observable<void>(observer => observer.complete());
-  }
-}
-
+import { MockAuthenticationService } from '../_utils';
 
 describe('NavigatorService', () => {
   beforeEach(() => {

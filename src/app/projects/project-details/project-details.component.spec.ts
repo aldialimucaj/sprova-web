@@ -8,6 +8,7 @@ import { ProjectService, NavigatorService, AuthenticationService, CycleService, 
 
 import { MomentModule } from 'ngx-moment';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MockQueryableService, MockAuthenticationService } from '../../_utils';
 
 
 describe('ProjectDetailsComponent', () => {
@@ -21,9 +22,12 @@ describe('ProjectDetailsComponent', () => {
       providers: [
         ProjectService,
         NavigatorService,
-        CycleService,      
-        TestCaseService,  
-        AuthenticationService
+        CycleService,
+        { provide: CycleService, useClass: MockQueryableService },      
+        { provide: NavigatorService, useClass: MockQueryableService },      
+        { provide: ProjectService, useClass: MockQueryableService },      
+        { provide: TestCaseService, useClass: MockQueryableService },      
+        { provide: AuthenticationService, useClass: MockAuthenticationService }
       ],
       imports: [
         HttpClientModule,
