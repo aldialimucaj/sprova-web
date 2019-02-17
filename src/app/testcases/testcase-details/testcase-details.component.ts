@@ -33,11 +33,12 @@ export class TestCaseDetailsComponent implements OnInit {
         this.testCaseId = params.testCaseId;
         this.cycleId = params.cycleId;
         this.type = params.type;
-        this.testcaseService.fetchOne(this.testCaseId).subscribe(data => {
-          this.model = data;
-          this.loading = false;
-        });
-
+        if (this.testCaseId) {
+          this.testcaseService.fetchOne(this.testCaseId).subscribe(data => {
+            this.model = data;
+            this.loading = false;
+          });
+        }
         // fetch execution history for cycle
         if (this.cycleId) {
           this.executionService.listModelsByFilter({ testCaseId: this.testCaseId, cycleId: this.cycleId }, 0, 0).subscribe(data => {

@@ -4,7 +4,7 @@ import { TestCaseDetailsComponent } from './testcase-details.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { TestCaseService, NavigatorService, AuthenticationService } from "../../_services";
+import { TestCaseService, ArtifactService, ExecutionService, NavigatorService, AuthenticationService } from "../../_services";
 
 import { MomentModule } from 'ngx-moment';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -20,6 +20,8 @@ describe('TestCaseDetailsComponent', () => {
       declarations: [TestCaseDetailsComponent],
       providers: [
         TestCaseService,
+        ArtifactService,
+        ExecutionService,
         NavigatorService,
         AuthenticationService
       ],
