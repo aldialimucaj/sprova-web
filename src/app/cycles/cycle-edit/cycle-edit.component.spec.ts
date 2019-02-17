@@ -4,7 +4,7 @@ import { CycleEditComponent } from './cycle-edit.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
-import { CycleService, NavigatorService, AuthenticationService } from '../../_services';
+import { CycleService, NavigatorService, AuthenticationService, ProjectService, TestCaseService } from '../../_services';
 
 import { MomentModule } from 'ngx-moment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +20,8 @@ describe('CycleEditComponent', () => {
       declarations: [CycleEditComponent],
       providers: [
         CycleService,
+        ProjectService,
+        TestCaseService,
         NavigatorService,
         AuthenticationService
       ],
