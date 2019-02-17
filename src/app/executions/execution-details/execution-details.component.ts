@@ -37,14 +37,15 @@ export class ExecutionDetailsComponent implements OnInit {
         this.id = params.executionId;
         this.projectId = params.projectId;
         this.type = params.type;
-        this.executionService.fetchOne(this.id).pipe(flatMap(data => {
-          this.model = data;
-          this.loading = false;
-          return this.artifactService.listModelsByFilter<Artifact[]>({ executionId: this.model._id });
-        })).subscribe(artifacts => {
-          this.artifacts = artifacts;
+        if (this.id) {
+          this.executionService.fetchOne(this.id).pipe(flatMap(data => {
+            this.model = data;
+            this.loading = false;
+            return this.artifactService.listModelsByFilter<Artifact[]>({ executionId: this.model._id });
+          })).subscribe(artifacts => {
+            this.artifacts = artifacts;
+          });
         }
-        );
       });
   }
 

@@ -3,8 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ExecutionDetailsComponent } from './execution-details.component';
 import { ClarityModule } from '@clr/angular';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
-import { ExecutionService, NavigatorService, AuthenticationService } from '../../_services';
+import { ExecutionService, ArtifactService, NavigatorService, AuthenticationService } from '../../_services';
 
 import { MomentModule } from 'ngx-moment';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -15,11 +14,12 @@ describe('ExecutionDetailsComponent', () => {
   let fixture: ComponentFixture<ExecutionDetailsComponent>;
 
   beforeEach(async(() => {
-   TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ExecutionDetailsComponent],
       providers: [
         ExecutionService,
+        ArtifactService,
         NavigatorService,
         AuthenticationService
       ],
