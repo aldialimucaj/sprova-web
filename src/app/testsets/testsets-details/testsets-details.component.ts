@@ -37,17 +37,21 @@ export class TestSetsDetailsComponent implements OnInit {
         this.projectId = params.projectId;
         this.testSetId = params.testSetId;
         this.cycleId = params.cycleId;
-        this.testSetService.fetchOne(this.testSetId)
-          .pipe<TestSetExecution[]>(mergeMap(data => {
-            this.model = data;
-            return this.testSetExecutionService.listModelsByFilter<TestSetExecution[]>({ 'testSetId': this.testSetId }, 0, 0);
-          })).pipe<TestCase[]>(mergeMap(executions => {
-            this.testSetExecutions = executions;
-            return this.testSetService.fetchTestCases<TestCase[]>(this.testSetId);
-          })).subscribe(testCaseData => {
-            this.testCases = testCaseData;
-            this.loading = false;
-          })
+        if (this.testSetId) {
+          this.testSetService.fetchOne(this.testSetId)
+            .pipe<TestSetExecution[]>(mergeMap(data => {
+              this.model = data;
+              return this.testSetExecutionService.listModelsByFilter<TestSetExecution[]>({ 'testSetId': this.testSetId }, 0, 0);
+            })).pipe<TestCase[]>(mergeMap(executions => {
+              this.testSetExecutions = executions;
+              return this.testSetService.fetchTestCases<TestCase[]>(this.testSetId);
+            })).subscribe(testCaseData => {
+              this.testCases = testCaseData;
+              this.loading = false;
+            })
+        } else {
+          this.loading = false;
+        }
       });
   }
 
