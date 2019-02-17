@@ -5,9 +5,9 @@ import { ExecutionsGridComponent } from './executions-grid.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService} from '../../_services/index';
+import { ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService } from '../../_services/index';
 import { ClarityModule } from '@clr/angular';
-
+import { MomentModule } from 'ngx-moment';
 
 
 describe('ExecutionsGridComponent', () => {
@@ -15,13 +15,13 @@ describe('ExecutionsGridComponent', () => {
   let fixture: ComponentFixture<ExecutionsGridComponent>;
 
   beforeEach(async(() => {
-   TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [RouterTestingModule, ClarityModule, HttpClientModule],
+      imports: [RouterTestingModule, ClarityModule, HttpClientModule, MomentModule],
       providers: [ProjectService, CycleService, TestSetService, TestSetExecutionService, NavigatorService, ExecutionService, AuthenticationService],
-      declarations: [ ExecutionsGridComponent ]
+      declarations: [ExecutionsGridComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
