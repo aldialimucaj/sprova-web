@@ -1,6 +1,7 @@
 # Sprova
 
 [![Build Status](https://travis-ci.org/aldialimucaj/sprova-web.svg?branch=master)](https://travis-ci.org/aldialimucaj/sprova-web)
+[![Coverage Status](https://coveralls.io/repos/github/aldialimucaj/sprova-web/badge.svg?branch=master)](https://coveralls.io/github/aldialimucaj/sprova-web?branch=master)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 

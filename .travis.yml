@@ -15,5 +15,5 @@ before_script:
 
 script:
   - ng build --prod --aot
-  - npm test
+  - npm test-coverage
   
