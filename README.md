@@ -1,5 +1,7 @@
 # Sprova
 
+[![Build Status](https://travis-ci.org/aldialimucaj/sprova-web.svg?branch=master)](https://travis-ci.org/aldialimucaj/sprova-web)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
 ## Development server
