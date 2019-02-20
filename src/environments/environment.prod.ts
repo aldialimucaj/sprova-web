@@ -4,7 +4,7 @@ export const LABELS = {
 
 export const environment = {
   production: true,
-  API_URL: location.protocol + '//' + location.hostname,
+  API_URL: location.protocol + '//' + location.hostname + ':' + location.port,
   JWT_TOKEN_NAME: 'id_token',
   JWT_JSON_TOKEN_NAME: 'id_json_token',
   GRAPHQL_PATH: '/graphql'
