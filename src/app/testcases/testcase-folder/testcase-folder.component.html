@@ -1,0 +1,35 @@
+<div class="clr-row">
+  <div class="clr-col-md-12" *ngIf="model">
+    <div class="btn-group btn-outline-primary btn-sm">
+      <button class="btn" (click)="toParent()">
+        <clr-icon shape="undo" title="Go back"></clr-icon>
+      </button>
+      <button class="btn">
+        <clr-icon shape="copy" title="Copy selected"></clr-icon>
+      </button>
+      <button class="btn">
+        <clr-icon shape="paste" title="Paste copied items"></clr-icon>
+      </button>
+      <button class="btn" title="Delete selected">
+        <clr-icon shape="trash"></clr-icon>
+      </button>
+    </div>
+    <clr-datagrid [(clrDgSelected)]="selected">
+      <clr-dg-column>Title</clr-dg-column>
+      <clr-dg-column>Description</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let testCase of model | packageFilter:'isParent'" class="hand" [clrDgItem]="testCase">
+        <clr-dg-cell (click)="open(testCase)">
+          <clr-icon *ngIf="testCase.isParent" shape="folder" class="is-solid"></clr-icon>
+          <clr-icon *ngIf="!testCase.isParent" shape="file"></clr-icon>{{testCase.title}}
+        </clr-dg-cell>
+        <clr-dg-cell>{{testCase.description}}</clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer *ngIf="model">
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Test cases
+        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>

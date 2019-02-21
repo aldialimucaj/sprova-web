@@ -4,14 +4,15 @@ import { ProjectService, CycleService, NavigatorService, TestCaseService } from 
 import { TestCase } from '../../_models';
 
 @Component({
-  selector: 'sprova-project-testcases',
-  templateUrl: './project-testcases.component.html',
-  styleUrls: ['./project-testcases.component.scss']
+  selector: 'sprova-testcase-folder',
+  templateUrl: './testcase-folder.component.html',
+  styleUrls: ['./testcase-folder.component.scss']
 })
-export class ProjectTestcasesComponent implements OnInit {
+export class TestcaseFolderComponent implements OnInit {
   model: TestCase[];
   folders: TestCase[];
   items: TestCase[];
+  selected: TestCase[];
   folder: TestCase;
   loading = true;
   projectId: string;
@@ -25,6 +26,7 @@ export class ProjectTestcasesComponent implements OnInit {
 
   ngOnInit() {
     this.items = [];
+    this.selected = [];
     this.route
       .params
       .subscribe(params => {
@@ -47,6 +49,23 @@ export class ProjectTestcasesComponent implements OnInit {
           this.testCaseService.getModel<TestCase>(this.testCaseId).subscribe(data => this.folder = data);
         }
       });
+  }
+
+
+  toParent() {
+    if (this.folder && this.folder.parentId) {
+      this.navigatorService.openTestCaseChildren(this.projectId, this.folder.parentId);
+    } else {
+      this.navigatorService.showTestCases(this.projectId);
+    }
+  }
+
+  open(testCase) {
+    if (testCase.isParent) {
+      this.navigatorService.openTestCaseChildren(this.projectId, testCase._id);
+    } else {
+      this.navigatorService.openTestCase(this.projectId, testCase._id);
+    }
   }
 
 }

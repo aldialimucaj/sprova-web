@@ -1,4 +1,4 @@
-<div class="clr-row">
+<div class="clr-row title-bar">
   <div class="clr-col-md-8 ">
     <!-- Control UI -->
     <div *ngIf="folder">
@@ -24,40 +24,4 @@
   </div>
 </div>
 
-<div class="clr-row">
-  <div class="clr-col-md-12 " *ngIf="model">
-    <clr-datagrid class="testcases-datagrid">
-      <clr-dg-column>Title</clr-dg-column>
-      <clr-dg-column>Description</clr-dg-column>
-      <clr-dg-column>Status</clr-dg-column>
-
-
-      <clr-dg-row (click)="toParent()" class="hand">
-        <clr-dg-cell>
-          ..
-        </clr-dg-cell>
-        <clr-dg-cell>
-        </clr-dg-cell>
-        <clr-dg-cell>
-        </clr-dg-cell>
-      </clr-dg-row>
-
-
-      <clr-dg-row *clrDgItems="let testcase of model | packageFilter:'isParent'" (click)="open(testcase)" class="hand">
-        <clr-dg-cell>
-          <clr-icon *ngIf="testcase.isParent" shape="folder" class="is-solid"></clr-icon>
-          <clr-icon *ngIf="!testcase.isParent" shape="file"></clr-icon>{{testcase.title}}
-        </clr-dg-cell>
-        <clr-dg-cell>{{testcase.description}}</clr-dg-cell>
-        <clr-dg-cell>
-          <span *ngIf="!testcase.isParent" class="label" [ngClass]="{'label-success': testcase.status=='active','label-warning': testcase.status=='inactive','label-danger': testcase.status=='defect'}">{{testcase.status}}</span>
-        </clr-dg-cell>
-      </clr-dg-row>
-
-      <clr-dg-footer *ngIf="model">
-        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} Test cases
-        <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="model.length"></clr-dg-pagination>
-      </clr-dg-footer>
-    </clr-datagrid>
-  </div>
-</div>
+<sprova-testcase-folder></sprova-testcase-folder>

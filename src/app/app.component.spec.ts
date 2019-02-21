@@ -36,7 +36,7 @@ import { ProjectCyclesComponent } from './projects/project-cycles/project-cycles
 import { ExecutionPieComponent } from './charts/execution-pie/execution-pie.component';
 import { ExecutionsGridComponent } from './executions/executions-grid/executions-grid.component';
 import { TestcaseStepsComponent } from './testcases/testcase-steps/testcase-steps.component';
-import { PackageFilterPipe } from './projects/project-testcases/package-filter.pipe';
+import { PackageFilterPipe } from './testcases/testcase-folder/package-filter.pipe';
 import { TestSetsComponent } from './testsets/testsets.component';
 import { TestSetsEditComponent } from './testsets/testsets-edit/testsets-edit.component';
 import { TestSetsDetailsComponent } from './testsets/testsets-details/testsets-details.component';

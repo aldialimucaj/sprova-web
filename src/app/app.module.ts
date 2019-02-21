@@ -50,7 +50,7 @@ import { ProjectCyclesComponent } from './projects/project-cycles/project-cycles
 import { ExecutionPieComponent } from './charts/execution-pie/execution-pie.component';
 import { ExecutionsGridComponent } from './executions/executions-grid/executions-grid.component';
 import { TestcaseStepsComponent } from './testcases/testcase-steps/testcase-steps.component';
-import { PackageFilterPipe } from './projects/project-testcases/package-filter.pipe';
+import { PackageFilterPipe } from './testcases/testcase-folder/package-filter.pipe';
 import { TestSetsComponent } from './testsets/testsets.component';
 import { TestSetsEditComponent } from './testsets/testsets-edit/testsets-edit.component';
 import { TestSetsDetailsComponent } from './testsets/testsets-details/testsets-details.component';
@@ -64,6 +64,7 @@ import { CycleReportComponent } from './reports/cycle-report/cycle-report.compon
 import { TestsetReportComponent } from './reports/testset-report/testset-report.component';
 import { ExecutionSingleComponent } from './executions/execution-single/execution-single.component';
 import { TestsetsDatagridComponent } from './testsets/testsets-datagrid/testsets-datagrid.component';
+import { TestcaseFolderComponent } from './testcases/testcase-folder/testcase-folder.component';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -112,7 +113,8 @@ export function createTranslateLoader(http: HttpClient) {
         CycleReportComponent,
         TestsetReportComponent,
         ExecutionSingleComponent,
-        TestsetsDatagridComponent
+        TestsetsDatagridComponent,
+        TestcaseFolderComponent
     ],
     imports: [
         BrowserAnimationsModule,
