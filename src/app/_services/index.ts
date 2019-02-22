@@ -11,3 +11,4 @@ export * from './testsets.service';
 export * from './testset-execution.service';
 export * from './tree-utils.service';
 export * from './reports.service';
+export * from './folder.service';

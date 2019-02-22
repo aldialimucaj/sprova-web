@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProjectService, CycleService, NavigatorService, TestCaseService } from '../../_services';
+import { ProjectService, CycleService, NavigatorService, TestCaseService, FolderService } from '../../_services';
 import { TestCase } from '../../_models';
 
 @Component({
@@ -18,11 +18,13 @@ export class TestcaseFolderComponent implements OnInit {
   projectId: string;
   testCaseId: string;
 
-  constructor(private route: ActivatedRoute,
+  constructor(public route: ActivatedRoute,
     public projectService: ProjectService,
     public cycleService: CycleService,
     public testCaseService: TestCaseService,
-    private navigatorService: NavigatorService) { }
+    public navigatorService: NavigatorService,
+    public folderService: FolderService
+  ) { }
 
   ngOnInit() {
     this.items = [];
@@ -32,17 +34,9 @@ export class TestcaseFolderComponent implements OnInit {
       .subscribe(params => {
         this.projectId = params.projectId;
         this.testCaseId = params.testCaseId;
-        let filter = { projectId: this.projectId, parentId: params.testCaseId ? params.testCaseId : null, withParentFlag: true };
 
         if (this.projectId) {
-          this.testCaseService.listModelsByFilter<TestCase[]>(filter, 0, 0).subscribe(data => {
-            this.model = data;
-            this.folders = data.filter(test => test.isParent);
-            this.loading = false;
-            this.items = this.items.concat(this.folders);
-            this.items = this.items.concat(this.model);
-
-          });
+          this.updateModel();
         }
 
         if (this.testCaseId) {
@@ -51,6 +45,29 @@ export class TestcaseFolderComponent implements OnInit {
       });
   }
 
+  updateModel() {
+    let filter = { projectId: this.projectId, parentId: this.testCaseId ? this.testCaseId : null, withParentFlag: true };
+
+    this.testCaseService.listModelsByFilter<TestCase[]>(filter, 0, 0).subscribe(data => {
+      this.model = data;
+      this.folders = data.filter(test => test.isParent);
+      this.loading = false;
+      this.items = this.items.concat(this.folders);
+      this.items = this.items.concat(this.model);
+    });
+  }
+
+  selectionChanged(newSelection) {
+    console.log(newSelection);
+    this.folderService.updateSelection(newSelection);
+  }
+
+  paste() {
+    let destination = this.folder ? this.folder._id : null;
+    this.folderService.paste(destination).subscribe(data => {
+      this.updateModel();
+    });
+  }
 
   toParent() {
     if (this.folder && this.folder.parentId) {

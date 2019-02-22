@@ -13,6 +13,7 @@ import { MomentModule } from 'ngx-moment';
 describe('ExecutionsGridComponent', () => {
   let component: ExecutionsGridComponent;
   let fixture: ComponentFixture<ExecutionsGridComponent>;
+  let executionService: ExecutionService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,6 +26,8 @@ describe('ExecutionsGridComponent', () => {
   }));
 
   beforeEach(() => {
+    executionService = TestBed.get(ExecutionService);
+    executionService['_testData'] = { data: {} }
     fixture = TestBed.createComponent(ExecutionsGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

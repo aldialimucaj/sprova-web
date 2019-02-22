@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProjectService, CycleService, NavigatorService, TestCaseService } from '../../_services';
+import { ProjectService, FolderService, CycleService, NavigatorService, TestCaseService } from '../../_services';
 import { TestcaseFolderComponent } from './testcase-folder.component';
 import { MockQueryableService } from '../../_utils';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,7 @@ describe('TestcaseFolderComponent', () => {
         { provide: CycleService, useClass: MockQueryableService },
         { provide: NavigatorService, useClass: MockQueryableService },
         { provide: TestCaseService, useClass: MockQueryableService },
-
+        FolderService,
       ],
       imports: [
         HttpClientModule,

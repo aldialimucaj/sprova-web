@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, empty } from 'rxjs';
+import { Observable, empty, of } from 'rxjs';
 
 import { Queryable } from '../../_models';
 
@@ -27,7 +27,11 @@ export class MockQueryableService implements Queryable {
 
   /* ************************************************************************* */
   public insertModel(model: any) {
-    return this.listModels(0,0);
+    return of(this._testData);
+  }
+
+  public push(model: any) {
+    return this.insertModel(model);
   }
 
   /* ************************************************************************* */

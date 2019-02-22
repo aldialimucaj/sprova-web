@@ -8,13 +8,13 @@
         <clr-icon shape="check" *ngIf="!selected"></clr-icon>
         <clr-icon shape="times" *ngIf="selected"></clr-icon>
       </button>
-      <button class="btn" title="Copy selected" [disabled]="!selected">
+      <button class="btn" title="Copy selected" (click)="folderService.copy()" [disabled]="!folderService.canCopy">
         <clr-icon shape="copy"></clr-icon>
       </button>
-      <button class="btn" title="Cut selected" [disabled]="!selected">
+      <button class="btn" title="Cut selected" [disabled]="!folderService.canCut">
         <clr-icon shape="scissors"></clr-icon>
       </button>
-      <button class="btn" title="Paste copied items" [disabled]="!selected">
+      <button class="btn" title="Paste copied items" (click)="paste()" [disabled]="!folderService.canPaste">
         <clr-icon shape="paste"></clr-icon>
       </button>
       <button class="btn" title="Delete selected" [disabled]="!selected">
@@ -22,7 +22,7 @@
       </button>
 
     </div>
-    <clr-datagrid [(clrDgSelected)]="selected">
+    <clr-datagrid [(clrDgSelected)]="selected" (clrDgSelectedChange)="selectionChanged($event)">
       <clr-dg-column>Title</clr-dg-column>
       <clr-dg-column>Description</clr-dg-column>
 
