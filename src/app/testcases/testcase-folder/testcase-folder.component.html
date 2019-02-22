@@ -1,18 +1,26 @@
 <div class="clr-row">
   <div class="clr-col-md-12" *ngIf="model">
     <div class="btn-group btn-outline-primary btn-sm">
-      <button class="btn" (click)="toParent()">
+      <button class="btn" (click)="toParent()" [disabled]="!folder">
         <clr-icon shape="undo" title="Go back"></clr-icon>
       </button>
-      <button class="btn">
-        <clr-icon shape="copy" title="Copy selected"></clr-icon>
+      <button class="btn" title="Delete selected" (click)="selected=selected?null:[]">
+        <clr-icon shape="check" *ngIf="!selected"></clr-icon>
+        <clr-icon shape="times" *ngIf="selected"></clr-icon>
       </button>
-      <button class="btn">
-        <clr-icon shape="paste" title="Paste copied items"></clr-icon>
+      <button class="btn" title="Copy selected" [disabled]="!selected">
+        <clr-icon shape="copy"></clr-icon>
       </button>
-      <button class="btn" title="Delete selected">
+      <button class="btn" title="Cut selected" [disabled]="!selected">
+        <clr-icon shape="scissors"></clr-icon>
+      </button>
+      <button class="btn" title="Paste copied items" [disabled]="!selected">
+        <clr-icon shape="paste"></clr-icon>
+      </button>
+      <button class="btn" title="Delete selected" [disabled]="!selected">
         <clr-icon shape="trash"></clr-icon>
       </button>
+
     </div>
     <clr-datagrid [(clrDgSelected)]="selected">
       <clr-dg-column>Title</clr-dg-column>

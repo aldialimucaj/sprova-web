@@ -26,7 +26,7 @@ export class TestcaseFolderComponent implements OnInit {
 
   ngOnInit() {
     this.items = [];
-    this.selected = [];
+    this.selected = null;
     this.route
       .params
       .subscribe(params => {
