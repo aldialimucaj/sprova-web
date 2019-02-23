@@ -11,7 +11,7 @@
       <button class="btn" title="Copy selected" (click)="folderService.copy()" [disabled]="!folderService.canCopy">
         <clr-icon shape="copy"></clr-icon>
       </button>
-      <button class="btn" title="Cut selected" [disabled]="!folderService.canCut">
+      <button class="btn" title="Cut selected" (click)="folderService.cut()" [disabled]="!folderService.canCut">
         <clr-icon shape="scissors"></clr-icon>
       </button>
       <button class="btn" title="Paste copied items" (click)="paste()" [disabled]="!folderService.canPaste">
