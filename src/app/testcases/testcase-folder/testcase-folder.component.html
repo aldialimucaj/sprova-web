@@ -1,13 +1,15 @@
 <div class="clr-row">
   <div class="clr-col-md-12" *ngIf="model">
-    <div class="btn-group btn-outline-primary btn-sm">
+    <div class="btn-group btn-outline-primary">
       <button class="btn" (click)="toParent()" [disabled]="!folder">
         <clr-icon shape="undo" title="Go back"></clr-icon>
       </button>
-      <button class="btn" title="Delete selected" (click)="selected=selected?null:[]">
+      <button class="btn" title="Select mode" (click)="selected=selected?null:[]">
         <clr-icon shape="check" *ngIf="!selected"></clr-icon>
         <clr-icon shape="times" *ngIf="selected"></clr-icon>
       </button>
+    </div>
+    <div class="btn-group btn-outline-primary">
       <button class="btn" title="Copy selected" (click)="folderService.copy()" [disabled]="!folderService.canCopy">
         <clr-icon shape="copy"></clr-icon>
       </button>
@@ -17,7 +19,7 @@
       <button class="btn" title="Paste copied items" (click)="paste()" [disabled]="!folderService.canPaste">
         <clr-icon shape="paste"></clr-icon>
       </button>
-      <button class="btn" title="Delete selected" (click)="delete()" [disabled]="!selected">
+      <button class="btn" title="Delete selected" (click)="delete()" [disabled]="!folderService.canDelete">
         <clr-icon shape="trash"></clr-icon>
       </button>
 

@@ -88,8 +88,8 @@ export class FolderService {
     return hasCopy || hasCut;
   }
 
-  get catDelete() {
-    return this.canCopy;
+  get canDelete() {
+    return this._selected && this._selected.length > 0;
   }
 
   public updateSelection(testCases: TestCase[]) {
