@@ -17,7 +17,7 @@
       <button class="btn" title="Paste copied items" (click)="paste()" [disabled]="!folderService.canPaste">
         <clr-icon shape="paste"></clr-icon>
       </button>
-      <button class="btn" title="Delete selected" [disabled]="!selected">
+      <button class="btn" title="Delete selected" (click)="delete()" [disabled]="!selected">
         <clr-icon shape="trash"></clr-icon>
       </button>
 

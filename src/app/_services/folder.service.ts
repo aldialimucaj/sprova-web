@@ -69,7 +69,8 @@ export class FolderService {
    * Delete elements in selection
    */
   public delete() {
-    // this.testCaseService.remove(this._selected);
+    const selectedIds = this._selected.map(s => s._id);
+    return this.testCaseService.remove(selectedIds);
   }
 
   get canCopy() {

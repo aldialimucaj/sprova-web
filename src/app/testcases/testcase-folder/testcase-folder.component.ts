@@ -69,6 +69,12 @@ export class TestcaseFolderComponent implements OnInit {
     });
   }
 
+  delete() {
+    this.folderService.delete().subscribe(data => {
+      this.updateModel();
+    });
+  }
+
   toParent() {
     if (this.folder && this.folder.parentId) {
       this.navigatorService.openTestCaseChildren(this.projectId, this.folder.parentId);

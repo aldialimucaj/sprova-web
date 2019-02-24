@@ -33,7 +33,7 @@ export class TestCaseService extends QueryableImpl {
   }
 
   /* ************************************************************************* */
-  remove(id: string) {
+  remove(id: any) {
     return super.removeModel<RemoveResponse>(id);
   }
 

@@ -10,7 +10,7 @@ export abstract class QueryableImpl implements Queryable {
     abstract fetchOne(id: string);
     abstract push(model: any);
     abstract update(model: any);
-    abstract remove(id: string);
+    abstract remove(id: any);
 
     constructor(private api: string, public http: HttpClient) {
     }
