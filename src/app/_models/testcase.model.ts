@@ -16,6 +16,7 @@ export /**
     parentId: string;
     parent: TestCase;
     isParent: boolean;
+    cloneFromId: string;
 
     constructor() {
         this.testSteps = [];

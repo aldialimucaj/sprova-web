@@ -59,6 +59,7 @@ export class FolderService {
   private pasteCopy(testCaseId: string) {
     const copyValues = this.toCopy.map(c => {
       c.parentId = testCaseId;
+      c.cloneFromId = c._id;
       return Object.assign({}, c);
     });
     delete this.toCopy;
