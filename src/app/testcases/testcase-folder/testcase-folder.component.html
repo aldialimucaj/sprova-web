@@ -1,29 +1,41 @@
-<div class="clr-row">
-  <div class="clr-col-md-12" *ngIf="model">
-    <div class="btn-group btn-outline-primary">
-      <button class="btn" (click)="toParent()" [disabled]="!folder">
-        <clr-icon shape="undo" title="Go back"></clr-icon>
-      </button>
-      <button class="btn" title="Select mode" (click)="selected=selected?null:[]">
+<div class="clr-row" *ngIf="model">
+  <div class="clr-col-md-8">
+    <clr-button-group class="btn-outline-primary">
+      <clr-button (click)="toParent()" [disabled]="!folder" title="Go back">
+        <clr-icon shape="undo"></clr-icon>
+      </clr-button>
+      <clr-button title="Select mode" (click)="selected=selected?null:[]">
         <clr-icon shape="check" *ngIf="!selected"></clr-icon>
         <clr-icon shape="times" *ngIf="selected"></clr-icon>
-      </button>
-    </div>
-    <div class="btn-group btn-outline-primary">
-      <button class="btn" title="Copy selected" (click)="folderService.copy()" [disabled]="!folderService.canCopy">
-        <clr-icon shape="copy"></clr-icon>
-      </button>
-      <button class="btn" title="Cut selected" (click)="folderService.cut()" [disabled]="!folderService.canCut">
-        <clr-icon shape="scissors"></clr-icon>
-      </button>
-      <button class="btn" title="Paste copied items" (click)="paste()" [disabled]="!folderService.canPaste">
-        <clr-icon shape="paste"></clr-icon>
-      </button>
-      <button class="btn" title="Delete selected" (click)="delete()" [disabled]="!folderService.canDelete">
-        <clr-icon shape="trash"></clr-icon>
-      </button>
+      </clr-button>
+    </clr-button-group>
 
-    </div>
+    <clr-button-group class="btn-outline-primary">
+      <clr-button class="btn" title="Copy selected" (click)="folderService.copy()" [disabled]="!folderService.canCopy">
+        <clr-icon shape="copy"></clr-icon>
+      </clr-button>
+      <clr-button class="btn" title="Cut selected" (click)="folderService.cut()" [disabled]="!folderService.canCut">
+        <clr-icon shape="scissors"></clr-icon>
+      </clr-button>
+      <clr-button class="btn" title="Paste copied items" (click)="paste()" [disabled]="!folderService.canPaste">
+        <clr-icon shape="paste"></clr-icon>
+      </clr-button>
+      <clr-button class="btn" title="Delete selected" (click)="delete()" [disabled]="!folderService.canDelete">
+        <clr-icon shape="trash"></clr-icon>
+      </clr-button>
+      <clr-button class="btn" (click)="createSet()" [disabled]="!folderService.canCreateShallowSet" [clrInMenu]="true"
+        title="Create test set only for visible selection">
+        <clr-icon shape="file"></clr-icon> Shallow Test Set
+      </clr-button>
+      <clr-button class="btn" (click)="createRecursiveSet()" [disabled]="!folderService.canCreateRecursiveSet"
+        [clrInMenu]="true" title="Create test set recursively">
+        <clr-icon shape="file-group"></clr-icon> Recursive Test Set
+      </clr-button>
+    </clr-button-group>
+  </div>
+</div>
+<div class="clr-row">
+  <div class="clr-col-md-12" *ngIf="model">
     <clr-datagrid [(clrDgSelected)]="selected" (clrDgSelectedChange)="selectionChanged($event)">
       <clr-dg-column>Title</clr-dg-column>
       <clr-dg-column>Description</clr-dg-column>

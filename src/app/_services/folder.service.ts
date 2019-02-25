@@ -93,6 +93,14 @@ export class FolderService {
     return this._selected && this._selected.length > 0;
   }
 
+  get canCreateShallowSet() {
+    return this._selected && this._selected.length > 0;
+  }
+
+  get canCreateRecursiveSet() {
+    return this._selected && this._selected.filter(t => t.isParent).length > 0;
+  }
+
   public updateSelection(testCases: TestCase[]) {
     this._selected = testCases;
   }

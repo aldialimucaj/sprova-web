@@ -58,7 +58,6 @@ export class TestcaseFolderComponent implements OnInit {
   }
 
   selectionChanged(newSelection) {
-    console.log(newSelection);
     this.folderService.updateSelection(newSelection);
   }
 
